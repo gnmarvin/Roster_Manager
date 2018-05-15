@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment myFragment = null;
         Class fragmentClass;
         switch (item.getItemId()) {
-            case R.id.nav_camera:
+            case R.id.nav_event:
                 fragmentClass = AddEventFragment.class;
                 break;
             default:
@@ -121,5 +121,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }
