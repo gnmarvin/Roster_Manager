@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.Notifications) {
             return true;
         }
 
@@ -79,39 +79,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //calling the method displayselectedscreen and passing the id of selected menu
         displaySelectedScreen(item.getItemId());
         //make this method blank
-////      Handle navigation view item clicks here.
-//        int id = item.getItemId();
-//        if (id == R.id.nav_event) {
-//            // Handle the camera action
-//            //fragmentClass = AddEventFragment.class;
-//        } else if (id == R.id.nav_cod) {
-//
-//        } else if (id == R.id.nav_setting) {
-//
-//        }
-//
-////        Fragment myFragment = null;
-////        Class fragmentClass;
-////        switch (item.getItemId()) {
-////            case R.id.nav_event:
-////                fragmentClass = AddEventFragment.class;
-////                break;
-////            default:
-////                fragmentClass = AddEventFragment.class;
-////        }
-////        try {
-////            myFragment = (Fragment) fragmentClass.newInstance();
-////        }
-////        catch (Exception e) {
-////            e.printStackTrace();
-////        }
-////        FragmentManager fragmentManager = getSupportFragmentManager();
-////        fragmentManager.beginTransaction().replace(R.id.fragmentmother,myFragment).commit();
-////        item.setChecked(true);
-////        setTitle(item.getTitle());
-//
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
