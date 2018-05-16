@@ -8,7 +8,7 @@ public class PhpConn {
 
     //untuk test ini alamat tertuju ke IP address dimana file PHP disimpan
     //jangan lupa ganti alamatnya sesuai alamat server kalo file PHP sudah di server
-    public static final String URL_ADD = "http://172.16.11.61/AndroidStudioProjects/RosterManager/php/add_event.php";
+    public static final String URL_ADD = "http://172.16.14.50/Android/php/add_event.php";
 
     //kunci yang digunakan untuk mengirim permintaan ke php
     public static final String KEY_EVENT_ID = "event_id";
