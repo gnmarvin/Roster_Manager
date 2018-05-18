@@ -17,12 +17,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    String username = "";               //variablr buat nampung username inputan user
+    String username = "";               //variable buat nampung username inputan user
     TextView header_username;           //variable buat text dibawah header picture
+    ImageView profilePicture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         header_username = (TextView)header.findViewById(R.id.header_username);
         header_username.setText(username);
         displaySelectedScreen(R.id.nav_event);
+
+        profilePicture = (ImageView)header.findViewById(R.id.profile_picture);
+        profilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, EditProfileActivity.class);
+                i.putExtra("USERNAME", username);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

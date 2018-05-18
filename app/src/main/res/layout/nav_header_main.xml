@@ -13,11 +13,11 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/profile_picture"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@mipmap/rostermanagement_text_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>
+        app:srcCompat="@mipmap/ic_launcher_round"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/header_username"

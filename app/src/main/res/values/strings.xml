@@ -23,4 +23,5 @@
         completions."
     </string>
     <string name="title_activity_forgot_password">ForgotPasswordActivity</string>
+    <string name="profile_activity">My Profile</string>
 </resources>
