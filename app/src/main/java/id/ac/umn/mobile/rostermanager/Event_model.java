@@ -1,40 +1,40 @@
 package id.ac.umn.mobile.rostermanager;
 
 public class Event_model {
-    private String nama_event;
-    private String tanggal_event;
-    private String shift_event;
+    private String name_event ;
+    private String date_event;
+    private String time_event;
     private String cod_event;
 
-    public Event_model(String nama_event, String tanggal_event, String shift_event, String cod_event){
-        this.nama_event = nama_event;
-        this.tanggal_event = tanggal_event;
-        this.shift_event = shift_event;
+    public Event_model(String name_event, String date_event, String time_event, String cod_event){
+        this.name_event = name_event;
+        this.date_event = date_event;
+        this.time_event = time_event;
         this.cod_event = cod_event;
     }
 
-    public String getNama_event(){
-        return nama_event;
+    public String getName_event(){
+        return name_event;
     }
 
-    public void setNama_event(String nama_event){
-        this.nama_event = nama_event;
+    public void setname_event(String name_event){
+        this.name_event = name_event;
     }
 
-    public String getTanggal_event(){
-        return tanggal_event;
+    public String getDate_event(){
+        return date_event;
     }
 
-    public void setTanggal_event(String tanggal_event){
-        this.tanggal_event = tanggal_event;
+    public void setdate_event(String date_event){
+        this.date_event = date_event;
     }
 
-    public String getShift_event(){
-        return shift_event;
+    public String getTime_event(){
+        return time_event;
     }
 
-    public void setShift_event(String shift_event){
-        this.shift_event = shift_event;
+    public void setTime_event(String time_event){
+        this.time_event = time_event;
     }
 
     public String getCod_event(){

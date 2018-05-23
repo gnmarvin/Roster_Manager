@@ -1,5 +1,6 @@
 package id.ac.umn.mobile.rostermanager;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,31 +10,54 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EventFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    List<Event_model> eventList;
+    RecyclerView rv;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        //get recyclerview from fragmentevent.xml
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_event, container, false);
 
-        RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recycler_event);
+        rv = (RecyclerView) rootView.findViewById(R.id.recycler_event);
         rv.setHasFixedSize(true);
-        EventAdapter adapter = new EventAdapter(new String[]{"test one", "test two", "test three", "test four", "test five" , "test six" , "test seven"});
-        rv.setAdapter(adapter);
-
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
 
-        return rootView;
+        eventList = new ArrayList<>();
 
-        //returning our layout file
-        //change R.layout.yourlayoutfilename for each of your fragments
-        //return inflater.inflate(R.layout.fragment_event, container, false);
+        //input data, gunakan loop untuk mengambil data dari database
+        eventList.add(
+                new Event_model(
+                        "Sunday Service",
+                        "Sunday, 20 May 2018",
+                        "08.00-10.00",
+                        "Aldy Stevanus"));
+        eventList.add(
+                new Event_model(
+                        "Sunday Service",
+                        "Sunday, 20 May 2adsddsdssdsdsdsd018",
+                        "10.30-12.30",
+                        "Aldy Stevanus"));
+        eventList.add(
+                new Event_model(
+                        "Sunday Service",
+                        "Sunday, 20 May 2018",
+                        "17.00-19.00",
+                        "Yosua Aryo Putra"));
+
+        EventAdapter adapter = new EventAdapter(getContext(), eventList);
+
+        rv.setAdapter(adapter);
+        return rootView;
     }
 
 
