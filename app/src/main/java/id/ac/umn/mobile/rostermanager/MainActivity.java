@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new InboxFragment();
                 break;
             case R.id.nav_my_schedules:
-                fragment = new MyScheduleFragment();
+                fragment = new MySchedulesFragment();
                 break;
             case R.id.nav_blockout:
                 fragment = new BlockoutDatesFragment();
