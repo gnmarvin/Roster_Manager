@@ -15,7 +15,7 @@
             android:icon="@drawable/calendar_multiple"
             android:title="Inbox" />
         <item
-            android:id="@+id/nav_myschedule"
+            android:id="@+id/nav_my_schedules"
             android:icon="@drawable/calendar_multiple"
             android:title="My Schedules" />
         <item
@@ -27,11 +27,11 @@
         android:id="@+id/menu_mid"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_planevent"
+            android:id="@+id/nav_plan_events"
             android:icon="@drawable/format_list_checks"
             android:title="Plan Events" />
         <item
-            android:id="@+id/nav_plancrew"
+            android:id="@+id/nav_plan_crews"
             android:icon="@drawable/format_list_checks"
             android:title="Plan Crews" />
         <item

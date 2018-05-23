@@ -107,13 +107,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_event:
                 fragment = new EventFragment();
                 break;
+            case R.id.nav_inbox:
+                fragment = new InboxFragment();
+                break;
+            case R.id.nav_my_schedules:
+                fragment = new MyScheduleFragment();
+                break;
+            case R.id.nav_blockout:
+                fragment = new BlockoutDatesFragment();
+                break;
+            case R.id.nav_plan_events:
+                fragment = new PlanEventsFragment();
+                break;
+            case R.id.nav_plan_crews:
+                fragment = new PlanCrewsFragment();
+                break;
             case R.id.nav_cod:
                 fragment = new CodFragment();
                 break;
             case R.id.nav_setting:
                 fragment = new SettingFragment();
                 break;
-        }
+            case R.id.nav_logout:
+//                fragment = new SettingFragment();
+                break;
+       }
 
         //replacing the fragment
         if (fragment != null) {
