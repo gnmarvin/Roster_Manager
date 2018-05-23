@@ -3,21 +3,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/menu_top">
         <item
             android:id="@+id/nav_event"
             android:icon="@drawable/calendar_multiple"
-            android:title="Event" />
+            android:title="All Event" />
+        <item
+            android:id="@+id/nav_inbox"
+            android:icon="@drawable/calendar_multiple"
+            android:title="Inbox" />
+        <item
+            android:id="@+id/nav_myschedule"
+            android:icon="@drawable/calendar_multiple"
+            android:title="My Schedules" />
+        <item
+            android:id="@+id/nav_blockout"
+            android:icon="@drawable/calendar_multiple"
+            android:title="Blockout Dates" />
+    </group>
+    <group
+        android:id="@+id/menu_mid"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_planevent"
+            android:icon="@drawable/format_list_checks"
+            android:title="Plan Events" />
+        <item
+            android:id="@+id/nav_plancrew"
+            android:icon="@drawable/format_list_checks"
+            android:title="Plan Crews" />
         <item
             android:id="@+id/nav_cod"
             android:icon="@drawable/format_list_checks"
             android:title="Chief On Duty" />
+    </group>
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_setting"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Setting" />
+            android:title="Help &amp; Setting" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Logout" />
     </group>
-
+    </menu>
     <!--<item android:title="Communicate">-->
         <!--<menu>-->
             <!--<item-->
@@ -31,4 +65,4 @@
         <!--</menu>-->
     <!--</item>-->
 
-</menu>
+
