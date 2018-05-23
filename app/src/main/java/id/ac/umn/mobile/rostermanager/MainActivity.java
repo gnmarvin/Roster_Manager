@@ -1,12 +1,8 @@
 package id.ac.umn.mobile.rostermanager;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -17,10 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     String username = "";               //variable buat nampung username inputan user
@@ -111,13 +105,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //initializing the fragment object which is selected
         switch (itemId) {
             case R.id.nav_event:
-                fragment = new Event();
+                fragment = new EventFragment();
                 break;
             case R.id.nav_cod:
-                fragment = new Cod();
+                fragment = new CodFragment();
                 break;
             case R.id.nav_setting:
-                fragment = new Setting();
+                fragment = new SettingFragment();
                 break;
         }
 
