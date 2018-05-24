@@ -44,7 +44,7 @@ public class EventFragment extends Fragment {
         eventList.add(
                 new Event_model(
                         "Sunday Service",
-                        "Sunday, 20 May 2adsddsdssdsdsdsd018",
+                        "Sunday, 20 May 2018",
                         "10.30-12.30",
                         "Aldy Stevanus"));
         eventList.add(

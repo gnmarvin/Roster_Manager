@@ -24,7 +24,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(mCtx)
-                .inflate(R.layout.card_event, null);
+                .inflate(R.layout.card_event, parent, false);
         // set the view's size, margins, paddings and layout parameters
         EventViewHolder vh = new EventViewHolder(v);
         return vh;
@@ -50,8 +50,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         public EventViewHolder(View itemView){
             super(itemView);
 
-            textViewEvent = itemView.findViewById(R.id.txt_nama_event);
-            textViewDate = itemView.findViewById(R.id.txt_tanggal_event);
+            textViewEvent = itemView.findViewById(R.id.txt_name_event);
+            textViewDate = itemView.findViewById(R.id.txt_date_event);
             textViewTime = itemView.findViewById(R.id.txt_time_event);
             textViewCod = itemView.findViewById(R.id.txt_cod_event);
         }
