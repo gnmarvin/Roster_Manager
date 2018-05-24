@@ -1,7 +1,7 @@
 package id.ac.umn.mobile.rostermanager;
 
 public class PlanEventsModel {
-    private String name_plan_event ;
+    private String name_event_plan_event ;
     private String date_plan_event;
     private String time_plan_event;
     private String cod_plan_event;
@@ -11,9 +11,9 @@ public class PlanEventsModel {
     private String campers_team_plan_event;
 
 
-    public PlanEventsModel(String name_plan_event, String date_plan_event, String time_plan_event, String cod_plan_event,
+    public PlanEventsModel(String name_event_plan_event, String date_plan_event, String time_plan_event, String cod_plan_event,
                            String photo_team_plan_event, String photo_respond_plan_event, String campers_team_plan_event, String campers_respond_plan_event){
-        this.name_plan_event = name_plan_event;
+        this.name_event_plan_event = name_event_plan_event;
         this.date_plan_event = date_plan_event;
         this.time_plan_event = time_plan_event;
         this.cod_plan_event = cod_plan_event;
@@ -23,8 +23,8 @@ public class PlanEventsModel {
         this.campers_respond_plan_event = campers_respond_plan_event;
     }
 
-    public String getName_plan_event(){
-        return name_plan_event;
+    public String getName_event_plan_event(){
+        return name_event_plan_event;
     }
 
     public String getDate_plan_event(){
@@ -48,7 +48,7 @@ public class PlanEventsModel {
     public String getCampers_team_plan_event() { return campers_team_plan_event; }
 
     public void setname_plan_event(String name_plan_event){
-        this.name_plan_event = name_plan_event;
+        this.name_event_plan_event = name_plan_event;
     }
 
     public void setdate_plan_event(String date_plan_event){

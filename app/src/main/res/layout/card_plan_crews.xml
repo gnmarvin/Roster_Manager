@@ -23,7 +23,7 @@
                 <TableRow>
                     <!--TextView Name -->
                     <TextView
-                        android:id="@+id/txt_name_event_plan_event"
+                        android:id="@+id/txt_name_event_plan_crew"
                         android:textSize="10pt"
                         android:textColor="@color/black"
                         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 <TableRow>
                     <!--TextView Date -->
                     <TextView
-                        android:id="@+id/txt_date_plan_event"
+                        android:id="@+id/txt_date_plan_crew"
                         android:textSize="8pt"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
@@ -45,7 +45,7 @@
                 <TableRow>
                     <!--TextView Time -->
                     <TextView
-                        android:id="@+id/txt_time_plan_event"
+                        android:id="@+id/txt_time_plan_crew"
                         android:textSize="8pt"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
@@ -55,7 +55,7 @@
                 <TableRow>
                     <!--TextView COD -->
                     <TextView
-                        android:id="@+id/txt_cod_plan_event"
+                        android:id="@+id/txt_cod_plan_crew"
                         android:textSize="8pt"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
@@ -63,52 +63,21 @@
                         android:text="COD"/>
                 </TableRow>
                 <TableRow>
-                    <!--TextView Photo Respond -->
+                    <!--TextView Respond -->
                     <TextView
-                        android:id="@+id/txt_photo_plan_event"
-                        android:textSize="8pt"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content"
-                        android:text="Photographers"/>
-                    <TextView
-                        android:id="@+id/txt_photo_team_plan_event"
+                        android:id="@+id/txt_team_plan_crew"
                         android:textSize="8pt"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="Team"/>
                     <TextView
-                        android:id="@+id/txt_photo_respond_plan_event"
+                        android:id="@+id/txt_respond_plan_crew"
                         android:textSize="8pt"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="Respond"/>
-                </TableRow>
-                <TableRow>
-                    <!--TextView Campers Respond -->
-                    <TextView
-                        android:id="@+id/txt_campers_plan_event"
-                        android:textSize="8pt"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content"
-                        android:text="Campers"/>
-                    <TextView
-                        android:id="@+id/txt_campers_team_plan_event"
-                        android:textSize="8pt"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="Team"/>
-                    <TextView
-                        android:id="@+id/txt_campers_respond_plan_event"
-                        android:textSize="8pt"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="Responde"/>
                 </TableRow>
             </TableLayout>
         </LinearLayout>

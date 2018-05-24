@@ -31,11 +31,15 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
 
     @Override
     public void onBindViewHolder(PlanEventsViewHolder holder, int position) {
-        PlanEventsModel event = planEventsModelList.get(position);
-        holder.textViewPlanEventName.setText(event.getName_plan_event());
-        holder.textViewPlanEventDate.setText(event.getDate_plan_event());
-        holder.textViewPlanEventTime.setText(event.getTime_plan_event());
-        holder.textViewPlanEventCod.setText(event.getCod_plan_event());
+        PlanEventsModel planevent = planEventsModelList.get(position);
+        holder.textViewPlanEventNameEvent.setText(planevent.getName_event_plan_event());
+        holder.textViewPlanEventDate.setText(planevent.getDate_plan_event());
+        holder.textViewPlanEventTime.setText(planevent.getTime_plan_event());
+        holder.textViewPlanEventCod.setText(planevent.getCod_plan_event());
+        holder.textViewPlanEventPhotoTeam.setText(planevent.getPhoto_team_plan_event());
+        holder.textViewPlanEventPhotoRespond.setText(planevent.getPhoto_respond_plan_event());
+        holder.textViewPlanEventCampersTeam.setText(planevent.getCampers_team_plan_event());
+        holder.textViewPlanEventCampersRespond.setText(planevent.getCampers_respond_plan_event());
     }
 
     @Override
@@ -44,15 +48,20 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
     }
 
     public class PlanEventsViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewPlanEventName, textViewPlanEventDate, textViewPlanEventTime, textViewPlanEventCod;
+        TextView textViewPlanEventNameEvent, textViewPlanEventDate, textViewPlanEventTime, textViewPlanEventCod,
+        textViewPlanEventPhotoTeam, textViewPlanEventPhotoRespond, textViewPlanEventCampersTeam, textViewPlanEventCampersRespond;
 
         public PlanEventsViewHolder(View itemView) {
             super(itemView);
 
-            textViewPlanEventName = itemView.findViewById(R.id.txt_name_plan_event);
+            textViewPlanEventNameEvent = itemView.findViewById(R.id.txt_name_event_plan_event);
             textViewPlanEventDate = itemView.findViewById(R.id.txt_date_plan_event);
             textViewPlanEventTime = itemView.findViewById(R.id.txt_time_plan_event);
             textViewPlanEventCod = itemView.findViewById(R.id.txt_cod_plan_event);
+            textViewPlanEventPhotoTeam = itemView.findViewById(R.id.txt_photo_team_plan_event);
+            textViewPlanEventPhotoRespond = itemView.findViewById(R.id.txt_photo_respond_plan_event);
+            textViewPlanEventCampersTeam = itemView.findViewById(R.id.txt_campers_team_plan_event);
+            textViewPlanEventCampersRespond = itemView.findViewById(R.id.txt_campers_respond_plan_event);
         }
     }
 }
