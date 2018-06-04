@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlanEventDetailsActivity">
+    <TableLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="16dp">
+        <TableRow
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp"
+            android:gravity="right">
+            <TextView
+                android:text="Event Details"
+                android:layout_gravity="right"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_name_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Date"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_date_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Time Start"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_time_start_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Time End"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_time_end_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp"
+            android:gravity="right">
+            <TextView
+                android:text="Crews"
+                android:layout_gravity="right"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Chief On Duty"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_cod_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Photographer Team"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+
+            <Spinner
+                android:id="@+id/edit_photo_team_event_plan_event"
+                android:layout_width="0dp"
+                android:layout_height="20pt"
+                android:layout_weight="1"
+                android:textSize="8pt" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Videographer Team"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <Spinner
+                android:id="@+id/edit_video_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="20pt"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Camera Person Team"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <Spinner
+                android:id="@+id/edit_camper_team_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="20pt"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Photographer Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_photo_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Videographer Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_video_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Camera Person Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_campers_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp">
+            <Button
+                android:id="@+id/save_event_plan_event"
+                android:text="Save"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/delete_event_plan_event"
+                android:text="cancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>

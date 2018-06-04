@@ -24,9 +24,9 @@ public class PlanCrewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //get recyclerview from fragmentplancrew.xml
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_event, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_plan_crews, container, false);
 
-        rv = (RecyclerView) rootView.findViewById(R.id.recycler_event);
+        rv = (RecyclerView) rootView.findViewById(R.id.recycler_plan_crews);
         rv.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);

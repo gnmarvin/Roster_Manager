@@ -7,11 +7,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
-        card_view:cardCornerRadius="3dp"
-        card_view:cardElevation="3dp"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="4dp"
         card_view:cardUseCompatPadding="true">
         <LinearLayout
+            android:id="@+id/linear_plan_event"
             android:layout_width="match_parent"
+            android:padding="12dp"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -19,20 +21,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:padding="8dp">
-                <TableRow>
+                android:padding="4dp">
+                <TableRow
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
                     <!--TextView Name -->
                     <TextView
                         android:id="@+id/txt_name_event_plan_event"
-                        android:textSize="10pt"
+                        android:textSize="12pt"
                         android:textColor="@color/black"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="event" />
-
                 </TableRow>
-                <TableRow>
+                <TableRow
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
                     <!--TextView Date -->
                     <TextView
                         android:id="@+id/txt_date_plan_event"
@@ -42,7 +47,9 @@
                         android:layout_height="wrap_content"
                         android:text="date"/>
                 </TableRow>
-                <TableRow>
+                <TableRow
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
                     <!--TextView Time -->
                     <TextView
                         android:id="@+id/txt_time_plan_event"
@@ -52,7 +59,9 @@
                         android:layout_height="wrap_content"
                         android:text="shift/time"/>
                 </TableRow>
-                <TableRow>
+                <TableRow
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
                     <!--TextView COD -->
                     <TextView
                         android:id="@+id/txt_cod_plan_event"
@@ -62,7 +71,9 @@
                         android:layout_height="wrap_content"
                         android:text="COD"/>
                 </TableRow>
-                <TableRow>
+                <TableRow
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
                     <!--TextView Photo Respond -->
                     <TextView
                         android:id="@+id/txt_photo_plan_event"
@@ -86,7 +97,9 @@
                         android:layout_height="wrap_content"
                         android:text="Respond"/>
                 </TableRow>
-                <TableRow>
+                <TableRow
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
                     <!--TextView Campers Respond -->
                     <TextView
                         android:id="@+id/txt_campers_plan_event"
@@ -108,7 +121,54 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="Responde"/>
+                        android:text="Respond"/>
+                </TableRow>
+                <TableRow
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+                    <!--TextView Videographers Respond -->
+                    <TextView
+                        android:id="@+id/txt_video_plan_event"
+                        android:textSize="8pt"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        android:text="Videographers"/>
+                    <TextView
+                        android:id="@+id/txt_video_team_plan_event"
+                        android:textSize="8pt"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Team"/>
+                    <TextView
+                        android:id="@+id/txt_video_respond_plan_event"
+                        android:textSize="8pt"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Respond"/>
+                </TableRow>
+                <TableRow
+                    android:paddingTop="4dp">
+                    <Button
+                        android:id="@+id/lock_plan_event"
+                        android:text="lock"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                    <Button
+                        android:id="@+id/unlock_plan_event"
+                        android:text="unlock"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                    <Button
+                        android:id="@+id/delete_plan_event"
+                        android:text="delete"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
                 </TableRow>
             </TableLayout>
         </LinearLayout>

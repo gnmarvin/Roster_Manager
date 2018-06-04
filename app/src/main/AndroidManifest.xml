@@ -32,8 +32,10 @@
             android:label="@string/title_activity_forgot_password"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".EditProfileActivity"
-            android:label="@string/profile_activity"/>
+            android:name=".ViewProfile"
+            android:label="@string/profile_activity" />
+        <activity android:name=".PlanEventDetailsActivity" />
+        <activity android:name=".PlanCrewsDetailsActivity"></activity>
     </application>
 
 </manifest>

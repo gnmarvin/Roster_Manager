@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        toolbar.setTitle("Event");
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -34,21 +33,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        //navigation
         Bundle extras = getIntent().getExtras();
         username = extras.getString("USERNAME");
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //header & selected screen
         View header = navigationView.getHeaderView(0);
         header_username = (TextView)header.findViewById(R.id.header_username);
         header_username.setText(username);
-        displaySelectedScreen(R.id.nav_event);
+        displaySelectedScreen(R.id.nav_my_schedules);
 
+        //click profile picture
         profilePicture = (ImageView)header.findViewById(R.id.profile_picture);
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, EditProfileActivity.class);
+                Intent i = new Intent(MainActivity.this, ViewProfile.class);
                 i.putExtra("USERNAME", username);
                 startActivity(i);
             }
@@ -104,9 +106,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //initializing the fragment object which is selected
         switch (itemId) {
-            case R.id.nav_event:
-                fragment = new EventFragment();
-                break;
             case R.id.nav_inbox:
                 fragment = new InboxFragment();
                 break;

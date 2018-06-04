@@ -1,5 +1,6 @@
 package id.ac.umn.mobile.rostermanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,13 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlanEventsFragment extends Fragment {
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private PlanEventsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     List<PlanEventsModel> planEventList;
     RecyclerView rv;
@@ -24,9 +26,9 @@ public class PlanEventsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //get recyclerview from fragmentevent.xml
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_event, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_plan_events, container, false);
 
-        rv = (RecyclerView) rootView.findViewById(R.id.recycler_event);
+        rv = (RecyclerView) rootView.findViewById(R.id.recycler_plan_events);
         rv.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
@@ -79,7 +81,9 @@ public class PlanEventsFragment extends Fragment {
         PlanEventsAdapter adapter = new PlanEventsAdapter(getContext(), planEventList);
 
         rv.setAdapter(adapter);
+
         return rootView;
+
     }
 
 
@@ -89,4 +93,6 @@ public class PlanEventsFragment extends Fragment {
         //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle("Plan Events");
     }
+
+
 }
