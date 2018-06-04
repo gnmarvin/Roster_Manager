@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_gravity="center_horizontal"
-    card_view:cardUseCompatPadding="true">
+    android:layout_gravity="center_horizontal">
     <LinearLayout
+        android:id="@+id/linear_crew_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
@@ -18,12 +18,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TableRow>
-                <Spinner
+                <EditText
+                    android:hint="Position"
                     android:id="@+id/list_position"
                     android:layout_width="0dp"
                     android:layout_weight="3"
-                    android:layout_height="20pt"></Spinner>
+                    android:layout_height="wrap_content"></EditText>
                 <EditText
+                    android:hint="Crew Name"
                     android:id="@+id/crew_name"
                     android:layout_width="0dp"
                     android:layout_weight="4"

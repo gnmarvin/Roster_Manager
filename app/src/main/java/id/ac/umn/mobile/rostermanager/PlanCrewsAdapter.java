@@ -1,11 +1,14 @@
 package id.ac.umn.mobile.rostermanager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -31,13 +34,22 @@ public class PlanCrewsAdapter extends RecyclerView.Adapter<PlanCrewsAdapter.Plan
 
     @Override
     public void onBindViewHolder(PlanCrewsViewHolder holder, int position) {
-        PlanCrewsModel plancrew = planCrewsModelList.get(position);
+        final PlanCrewsModel plancrew = planCrewsModelList.get(position);
         holder.textViewPlanCrewNameEvent.setText(plancrew.getName_event_plan_crew());
         holder.textViewPlanCrewDate.setText(plancrew.getDate_plan_crew());
         holder.textViewPlanCrewTime.setText(plancrew.getTime_plan_crew());
         holder.textViewPlanCrewCod.setText(plancrew.getCod_plan_crew());
         holder.textViewPlanCrewTeam.setText(plancrew.getTeam_plan_crew());
         holder.textViewPlanCrewRespond.setText(plancrew.getRespond_plan_crew());
+        //click the card
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotodetailcrew = new Intent(mCtx, PlanCrewsDetailsActivity.class);
+                mCtx.startActivity(gotodetailcrew);
+                Toast.makeText(mCtx, plancrew.getName_event_plan_crew(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -47,10 +59,10 @@ public class PlanCrewsAdapter extends RecyclerView.Adapter<PlanCrewsAdapter.Plan
 
     public class PlanCrewsViewHolder extends RecyclerView.ViewHolder {
         TextView textViewPlanCrewNameEvent, textViewPlanCrewDate, textViewPlanCrewTime, textViewPlanCrewCod, textViewPlanCrewTeam, textViewPlanCrewRespond;
-
+        public LinearLayout linearLayout;
         public PlanCrewsViewHolder(View itemView) {
             super(itemView);
-
+            linearLayout = (LinearLayout) itemView.findViewById(R.id.linear_plan_crew);
             textViewPlanCrewNameEvent = itemView.findViewById(R.id.txt_name_event_plan_crew);
             textViewPlanCrewDate = itemView.findViewById(R.id.txt_date_plan_crew);
             textViewPlanCrewTime = itemView.findViewById(R.id.txt_time_plan_crew);

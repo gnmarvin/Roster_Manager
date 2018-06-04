@@ -1,11 +1,11 @@
 package id.ac.umn.mobile.rostermanager;
 
-public class LIstCrewDetailsModel {
+public class ListCrewDetailsModel {
 
     private String position;
     private String name_crew;
 
-    public LIstCrewDetailsModel(String position, String name_crew){
+    public ListCrewDetailsModel(String position, String name_crew){
         this.position = position;
         this.name_crew = name_crew;
     }
@@ -15,6 +15,6 @@ public class LIstCrewDetailsModel {
     }
 
     public  String getName_crew(){
-        return position;
+        return name_crew;
     }
 }

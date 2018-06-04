@@ -24,4 +24,17 @@
     </string>
     <string name="title_activity_forgot_password">ForgotPasswordActivity</string>
     <string name="profile_activity">My Profile</string>
+    <string-array name="Position_Photo">
+        <item>Photographer 1</item>
+        <item>Photographer 2</item>
+        <item>Photographer 3</item>
+        <item>Photographer Extra</item>
+        <item>Photographer CC</item>
+        <item>Photographer PK</item>
+        <item>Photographer TX</item>
+        <item>Videographer 1</item>
+        <item>Videographer 2</item>
+        <item>Videographer 3</item>
+        <item>Videographer Extra</item>
+    </string-array>
 </resources>
