@@ -17,7 +17,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    String username = "";               //variable buat nampung username inputan user
+    String full_name = "";               //variable buat nampung username inputan user
+    String email = "";
+    String mobile_no = "";
+    String mobile_whatsapp = "";
+    String mobile_line = "";
     TextView header_username;           //variable buat text dibawah header picture
     ImageView profilePicture;
     @Override
@@ -34,15 +38,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         //navigation
-        Bundle extras = getIntent().getExtras();
-        username = extras.getString("USERNAME");
+        Intent i = getIntent();
+        Bundle extras = i.getExtras();
+        full_name = extras.getString("USERNAME");
+        email = extras.getString("EMAIL");
+        mobile_no = extras.getString("MOBILE_NO");
+        mobile_whatsapp = extras.getString("MOBILE_WHATSAPP");
+        mobile_line = extras.getString("MOBILE_LINE");
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         //header & selected screen
         View header = navigationView.getHeaderView(0);
         header_username = (TextView)header.findViewById(R.id.header_username);
-        header_username.setText(username);
+        header_username.setText(full_name);
         displaySelectedScreen(R.id.nav_my_schedules);
 
         //click profile picture
@@ -51,7 +60,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, ViewProfile.class);
-                i.putExtra("USERNAME", username);
+                Bundle extras = new Bundle();
+                extras.putString("USERNAME", full_name);
+                extras.putString("EMAIL", email);
+                extras.putString("MOBILE_NO", mobile_no);
+                extras.putString("MOBILE_WHATSAPP", mobile_whatsapp);
+                extras.putString("MOBILE_LINE", mobile_line);
+                i.putExtras(extras);
                 startActivity(i);
             }
         });
