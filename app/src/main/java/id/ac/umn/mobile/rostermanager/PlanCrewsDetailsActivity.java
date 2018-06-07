@@ -26,16 +26,24 @@ public class PlanCrewsDetailsActivity extends AppCompatActivity {
 
         listCrewDetails = new ArrayList<>();
 
-        for(int i = 0; i<10; i++){
-            ListCrewDetailsModel listCrewDetailsModel = new ListCrewDetailsModel(
-                    "lala" + (i+1),
-                    "andre"
-            );
+        listCrewDetails.add(
+                new ListCrewDetailsModel(
+                        "George Joseph K",
+                        "Photographer 1",
+                        "Team D",
+                        "OK"
+                )
+        );
+        listCrewDetails.add(
+                new ListCrewDetailsModel(
+                        "George Joseph K",
+                        "Photographer 1",
+                        "Team D",
+                        "OK"
+                )
+        );
 
-            listCrewDetails.add(listCrewDetailsModel);
-        }
-
-        adapter = new ListCrewDetailsAdapter(listCrewDetails, this);
+        ListCrewDetailsAdapter adapter = new ListCrewDetailsAdapter(this, listCrewDetails);
 
         recyclerView.setAdapter(adapter);
     }

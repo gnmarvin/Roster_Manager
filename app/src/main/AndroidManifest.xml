@@ -35,7 +35,8 @@
             android:name=".ViewProfile"
             android:label="@string/profile_activity" />
         <activity android:name=".PlanEventDetailsActivity" />
-        <activity android:name=".PlanCrewsDetailsActivity"></activity>
+        <activity android:name=".PlanCrewsDetailsActivity" />
+        <activity android:name=".InsidePlanCrewsDetailsActivity"></activity>
     </application>
 
 </manifest>

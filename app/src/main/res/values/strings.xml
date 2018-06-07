@@ -37,4 +37,37 @@
         <item>Videographer 3</item>
         <item>Videographer Extra</item>
     </string-array>
+    <string-array name="Position_Campers">
+        <item>Camera Person 1</item>
+        <item>Camera Person 2</item>
+        <item>Camera Person 3</item>
+        <item>Camera Person 4</item>
+        <item>Camera Person 5</item>
+        <item>Camera Person 6</item>
+        <item>Camera Person Dolly</item>
+        <item>Support</item>
+        <item>VTR</item>
+        <item>Switcher</item>
+        <item>Sermon 50</item>
+        <item>Editor</item>
+        <item>Assistant Camera Person 1</item>
+        <item>Assistant Camera Person 2</item>
+        <item>Assistant Camera Person 3</item>
+        <item>Assistant Camera Person 4</item>
+        <item>Assistant Camera Person 5</item>
+        <item>Assistant Camera Person 6</item>
+        <item>Assistant Camera Person Dolly</item>
+    </string-array>
+    <string-array name="Team_Photo">
+        <item>Team A</item>
+        <item>Team B</item>
+        <item>Team C</item>
+        <item>Team D</item>
+    </string-array>
+    <string-array name="Team_Campers">
+        <item>Team A</item>
+        <item>Team B</item>
+        <item>Team C</item>
+        <item>Team D</item>
+    </string-array>
 </resources>
