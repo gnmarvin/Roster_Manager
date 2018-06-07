@@ -20,7 +20,7 @@ public class APIClient {
 
             if(retrofit == null){
                 retrofit = new Retrofit.Builder()
-                        .baseUrl("http://172.16.0.239:8443/")    //BASE URL TARO SINI
+                        .baseUrl("http://192.168.0.100:8443")    //BASE URL TARO SINI
                         .addConverterFactory(GsonConverterFactory.create())
                         .client(okHttpClientBuilder.build())
                         .build();

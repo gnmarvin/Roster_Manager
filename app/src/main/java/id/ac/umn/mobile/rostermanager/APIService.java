@@ -8,16 +8,19 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 /**
  * Created by Marvin on 6/5/2018.
  */
 
 public interface APIService {
-    @POST("auth/auth_login_rest")
+    @PUT("/auth/auth_login_rest")
     @FormUrlEncoded
     Call<JsonElement> Login(@Field("username") String username,
                                 @Field("password") String password);
+    @GET("auth/auth_login_rest")
+    Call<JsonElement> Loginpakeget();
 
 //    @POST("signup.php")
 //    @FormUrlEncoded
