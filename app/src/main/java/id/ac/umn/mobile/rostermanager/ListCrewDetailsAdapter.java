@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.media.Image;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,7 @@ public class ListCrewDetailsAdapter extends RecyclerView.Adapter<ListCrewDetails
             @Override
             public void onClick(View v) {
                 Intent gotoinsidelistcrew = new Intent(context, InsidePlanCrewsDetailsActivity.class);
+                gotoinsidelistcrew.putExtra("position", "campers"); //parameter untuk filtering dia fotografer atau campers
                 context.startActivity(gotoinsidelistcrew);
                 Toast.makeText(context, listCrewDetails.getName_crew(),Toast.LENGTH_LONG).show();
             }
@@ -67,7 +69,6 @@ public class ListCrewDetailsAdapter extends RecyclerView.Adapter<ListCrewDetails
         public TextView textViewPosition;
         public TextView textViewTeam;
         public TextView textViewRespond;
-        public ImageView ddownPosition;
 
         public ViewHolder(View itemView) {
             super(itemView);
