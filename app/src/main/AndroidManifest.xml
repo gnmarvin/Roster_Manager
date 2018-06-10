@@ -20,6 +20,7 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -35,7 +36,8 @@
             android:label="@string/profile_activity" />
         <activity android:name=".PlanEventDetailsActivity" />
         <activity android:name=".PlanCrewsDetailsActivity" />
-        <activity android:name=".InsidePlanCrewsDetailsActivity"></activity>
+        <activity android:name=".InsidePlanCrewsDetailsActivity" />
+        <activity android:name=".BlockoutDatesEditActivity"></activity>
     </application>
 
 </manifest>
