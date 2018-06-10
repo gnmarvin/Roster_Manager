@@ -53,7 +53,7 @@ public class PlanEventsFragment extends Fragment {
                 String event_end_date = obj.get("event_end_date").getAsString();
                 String event_type = obj.get("event_type").getAsString();
 
-                //INI CONTOH LOOP BUAT BACA JSON AMPE ABIS
+                //INI CONTOH LOOP BUAT BACA JSON AMPE ABISS
 //                JsonElement element = response.body();
 //                JsonObject obj = element.getAsJsonObject();
 //                JsonArray data = obj.get("result").getAsJsonArray();
