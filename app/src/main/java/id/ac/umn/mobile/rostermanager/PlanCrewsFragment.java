@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlanCrewsFragment extends Fragment {
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
     List<PlanCrewsModel> planCrewsList;
     RecyclerView rv;
 
