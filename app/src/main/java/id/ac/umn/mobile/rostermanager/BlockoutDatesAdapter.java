@@ -16,7 +16,7 @@ public class BlockoutDatesAdapter  extends RecyclerView.Adapter<BlockoutDatesAda
     private Context context;
     private List<BlockoutDatesModel> blockoutDatesModelList;
 
-    public BlockoutDatesAdapter(List<BlockoutDatesModel> blockoutDatesModelList, Context context){
+    public BlockoutDatesAdapter(Context context, List<BlockoutDatesModel> blockoutDatesModelList) {
         this.blockoutDatesModelList = blockoutDatesModelList;
         this.context = context;
     }
