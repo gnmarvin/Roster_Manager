@@ -31,7 +31,7 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
     }
 
     public void showDatePickerDialog(View v) {
-        DatePickerFragment datePickerFragment = new DatePickerFragment();
+        DatePickerFragment datePickerFragment = new DatePickerFragment(); //test
         datePickerFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
