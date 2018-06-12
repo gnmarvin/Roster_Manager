@@ -1,9 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BlockoutDatesEditActivity">
+    <TableLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <TableRow
+            android:paddingTop="12dp">
+            <TextView
+                android:text="Start"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_start_date_block"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="End"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_date_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Reason"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+        </TableRow>
+        <TableRow>
+            <EditText
+                android:id="@+id/edit_reason_blockout_dates"
+                android:textSize="8pt"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp">
+            <Button
+                android:id="@+id/save_event_plan_event"
+                android:text="Save"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/delete_event_plan_event"
+                android:text="cancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
 
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -22,6 +22,9 @@ public interface APIService {
     @GET("auth/auth_login_rest")
     Call<JsonElement> Loginpakeget();
 
+    @GET("/event/event_rest")
+    Call<JsonElement> Event();
+
 //    @POST("signup.php")
 //    @FormUrlEncoded
 //    Call<JsonElement> SignUpQuiz(@Field("username") String username,
