@@ -1,7 +1,9 @@
 package id.ac.umn.mobile.rostermanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +25,7 @@ public class BlockoutDatesFragment extends Fragment {
         //returning our layout file
 
         //change R.layout.yourlayoutfilename for each of your fragments
-        View rootview = inflater.inflate(R.layout.fragment_blockout_dates, container, false);
+        final View rootview = inflater.inflate(R.layout.fragment_blockout_dates, container, false);
 
         rv = rootview.findViewById(R.id.recycler_blockout_dates);
         rv.setHasFixedSize(true);
@@ -33,11 +35,23 @@ public class BlockoutDatesFragment extends Fragment {
         blockoutDatesList = new ArrayList<>();
 
         //input date & reason
-        blockoutDatesList.add(new BlockoutDatesModel("27-May-2018","work & job"));
+        for(int i= 0; i<12; i++){
+            blockoutDatesList.add(new BlockoutDatesModel("27-May-2018","work & job"));
+        }
 
         BlockoutDatesAdapter adapter = new BlockoutDatesAdapter(getContext(), blockoutDatesList);
 
         rv.setAdapter(adapter);
+
+        FloatingActionButton fab = rootview.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addblockout = new Intent(getContext(), BlockoutDatesEditActivity.class);
+                startActivity(addblockout);
+            }
+        });
+
         return rootview;
     }
 
