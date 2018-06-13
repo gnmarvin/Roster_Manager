@@ -30,7 +30,7 @@ public class InboxFragment extends Fragment {
 
         inboxList = new ArrayList<>();
 
-        inboxList.add(new InboxModel("Rosterd","You're Rostered on ..."));
+        inboxList.add(new InboxModel("Roster","You're Rostered on ..."));
 
         InboxAdapter adapter = new InboxAdapter(getContext(), inboxList);
         rv.setAdapter(adapter);

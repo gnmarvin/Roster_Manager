@@ -12,7 +12,6 @@ import android.widget.Toast;
 import java.util.List;
 
 public class InboxAdapter extends RecyclerView.Adapter<InboxAdapter.InboxViewHolder> {
-
     private Context context;
     private List<InboxModel> inboxModelList;
 
@@ -36,7 +35,7 @@ public class InboxAdapter extends RecyclerView.Adapter<InboxAdapter.InboxViewHol
         holder.linearInbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "oke", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, inbox.getTitle(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -54,7 +53,7 @@ public class InboxAdapter extends RecyclerView.Adapter<InboxAdapter.InboxViewHol
             super(itemView);
             textTitle = itemView.findViewById(R.id.title_inbox);
             textMessage = itemView.findViewById(R.id.message_inbox);
-            linearInbox = itemView.findViewById(R.id.linear_blockout_dates);
+            linearInbox = itemView.findViewById(R.id.linear_inbox);
         }
     }
 }
