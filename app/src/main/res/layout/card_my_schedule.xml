@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_item_schedule"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true">
+    <LinearLayout
+        android:id="@+id/linear_my_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="12dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txt_name_event_my_schedule"
+                android:textSize="12pt"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="event" />
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:id="@+id/more_action_my_schedule"
+                android:src="@drawable/dots_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/txt_date_my_schedule"
+            android:textSize="8pt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="date"/>
+        <TextView
+            android:id="@+id/txt_time_my_schedule"
+            android:textSize="8pt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="shift/time"/>
+        <TextView
+            android:id="@+id/txt_position_my_schedule"
+            android:textSize="8pt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="position"/>
+        <!--optional, jika dia COD gausa tampilkan COD-->
+        <TextView
+            android:id="@+id/txt_cod_my_schedule"
+            android:textSize="8pt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COD"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
