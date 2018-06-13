@@ -27,9 +27,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="event" />
-            <ImageView
+            <ImageButton
                 android:layout_alignParentRight="true"
                 android:id="@+id/more_action_my_schedule"
+                android:background="@null"
                 android:src="@drawable/dots_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

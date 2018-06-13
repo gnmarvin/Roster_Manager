@@ -5,10 +5,14 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,18 +35,33 @@ public class MySchedulesAdapter extends RecyclerView.Adapter<MySchedulesAdapter.
     }
 
     @Override
-    public void onBindViewHolder(MySchedulesViewHolder holder, int position) {
+    public void onBindViewHolder(final MySchedulesViewHolder holder, int position) {
         final MySchedulesModel myschedules = mySchedulesModelList.get(position);
         holder.textViewEventName.setText(myschedules.getName_event_my_schedule());
         holder.textViewDate.setText(myschedules.getDate_my_schedule());
         holder.textViewTime.setText(myschedules.getTime_my_schedule());
         holder.textViewPosition.setText(myschedules.getPosition_my_schedule());
         holder.textViewCod.setText(myschedules.getCod_my_schedule());
-        holder.imageViewMoreAction.setOnClickListener(new View.OnClickListener() {
+        holder.imageButtonMoreAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //munculin more action
-                Toast.makeText(context, "more", Toast.LENGTH_LONG).show();
+                PopupMenu popupMenu = new PopupMenu(context, v);
+                MenuInflater inflater = popupMenu.getMenuInflater();
+                inflater.inflate(R.menu.my_schedule_options, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.menu_cancel_replace:
+                                Toast.makeText(context, "cancel", Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                        return false;
+                    }
+                });
+
+                popupMenu.show();
             }
         });
         holder.linearLayoutMySchedules.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +81,7 @@ public class MySchedulesAdapter extends RecyclerView.Adapter<MySchedulesAdapter.
     public class MySchedulesViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewEventName, textViewDate, textViewTime, textViewPosition, textViewCod;
         public LinearLayout linearLayoutMySchedules;
-        public ImageView imageViewMoreAction;
+        public ImageButton imageButtonMoreAction;
 
         public MySchedulesViewHolder(View itemView) {
             super(itemView);
@@ -72,7 +91,7 @@ public class MySchedulesAdapter extends RecyclerView.Adapter<MySchedulesAdapter.
             textViewPosition = itemView.findViewById(R.id.txt_time_my_schedule);
             textViewCod = itemView.findViewById(R.id.txt_cod_my_schedule);
             linearLayoutMySchedules = itemView.findViewById(R.id.linear_my_schedule);
-            imageViewMoreAction = itemView.findViewById(R.id.more_action_my_schedule);
+            imageButtonMoreAction = itemView.findViewById(R.id.more_action_my_schedule);
         }
     }
 }
