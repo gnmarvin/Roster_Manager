@@ -7,8 +7,8 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
         android:allowBackup="true"
@@ -39,7 +39,8 @@
         <activity android:name=".PlanEventDetailsActivity" />
         <activity android:name=".PlanCrewsDetailsActivity" />
         <activity android:name=".InsidePlanCrewsDetailsActivity" />
-        <activity android:name=".BlockoutDatesEditActivity"></activity>
+        <activity android:name=".BlockoutDatesEditActivity" />
+        <activity android:name=".CancelReplaceActivity"></activity>
     </application>
 
 </manifest>

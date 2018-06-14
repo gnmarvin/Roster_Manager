@@ -1,16 +1,21 @@
 package id.ac.umn.mobile.rostermanager;
 
+import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.widget.AlertDialogLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -55,12 +60,13 @@ public class MySchedulesAdapter extends RecyclerView.Adapter<MySchedulesAdapter.
                         switch (item.getItemId()){
                             case R.id.menu_cancel_replace:
                                 Toast.makeText(context, "cancel", Toast.LENGTH_SHORT).show();
+                                Intent gotowritereason = new Intent(context,CancelReplaceActivity.class);
+                                context.startActivity(gotowritereason);
                                 break;
                         }
                         return false;
                     }
                 });
-
                 popupMenu.show();
             }
         });
@@ -72,6 +78,7 @@ public class MySchedulesAdapter extends RecyclerView.Adapter<MySchedulesAdapter.
             }
         });
     }
+
 
     @Override
     public int getItemCount() {

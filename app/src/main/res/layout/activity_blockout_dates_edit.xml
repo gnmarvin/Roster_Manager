@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="0dp" />
             <EditText
-                android:id="@+id/edit_date_event_plan_event"
+                android:id="@+id/edit_end_date_block"
                 android:layout_weight="1"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
@@ -59,13 +59,13 @@
             android:paddingTop="4dp"
             android:paddingBottom="4dp">
             <Button
-                android:id="@+id/save_event_plan_event"
+                android:id="@+id/save_blockout_event"
                 android:text="Save"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
             <Button
-                android:id="@+id/delete_event_plan_event"
+                android:id="@+id/cancel_blockout_event"
                 android:text="cancel"
                 android:layout_width="0dp"
                 android:layout_weight="1"
