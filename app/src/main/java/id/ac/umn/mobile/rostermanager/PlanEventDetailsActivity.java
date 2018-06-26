@@ -10,7 +10,9 @@ import android.widget.Toast;
 
 public class PlanEventDetailsActivity extends AppCompatActivity {
     String event_name, event_start_date, event_start_time;
-    EditText detail_event_name, detail_event_date, detail_event_time;
+    EditText detail_event_name, detail_event_date, detail_event_time,
+    edit_photo_team, edit_campers_team, edit_photo_quota, edit_photo_tx_quota, edit_photo_pk_quota, edit_photo_extra_quota, edit_video_quota, edit_video_extra_quota,
+    edit_campers_quota, edit_ast_campers_quota, edit_dolly_quota, edit_vtr_quota, edit_switcher_quota, edit_support_quota;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,20 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
         detail_event_date.setText(event_start_date);
         detail_event_time = findViewById(R.id.edit_time_start_event_plan_event);
         detail_event_time.setText(event_start_time);
+//        edit_photo_team x;
+//        edit_campers_team x;
+//        edit_photo_quota x;
+//        edit_photo_tx_quota x;
+//        edit_photo_pk_quota x;
+//        edit_photo_extra_quota x;
+//        edit_video_quota x;
+//        edit_video_extra_quota x;
+//        edit_campers_quota x;
+//        edit_ast_campers_quota x;
+//        edit_dolly_quota x;
+//        edit_vtr_quota x;
+//        edit_switcher_quota x;
+//        edit_support_quota x;
     }
 
     public void showDatePickerDialog(View v) {
