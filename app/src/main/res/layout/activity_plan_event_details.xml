@@ -41,6 +41,7 @@
             <EditText
                 android:id="@+id/edit_date_event_plan_event"
                 android:layout_weight="1"
+                android:onClick="showDatePickerDialog"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"/>
@@ -55,6 +56,7 @@
             <EditText
                 android:id="@+id/edit_time_start_event_plan_event"
                 android:layout_weight="1"
+                android:onClick="showTimePickerDialog"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"/>
@@ -69,6 +71,7 @@
             <EditText
                 android:id="@+id/edit_time_end_event_plan_event"
                 android:layout_weight="1"
+                android:onClick="showTimePickerDialog"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"/>
@@ -189,6 +192,62 @@
         </TableRow>
         <TableRow>
             <TextView
+                android:text="Photographer TX Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_photo_tx_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Photographer PK Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_photo_pk_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Photographer CC Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_photo_cc_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Photographer Extra Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_photo_extra_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
                 android:text="Videographer Quota"
                 android:layout_weight="1"
                 android:textSize="8pt"
@@ -196,6 +255,20 @@
                 android:layout_width="0dp" />
             <EditText
                 android:id="@+id/edit_video_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Videographer Extra Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_video_extra_quota_event_plan_event"
                 android:layout_weight="1"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
@@ -215,7 +288,76 @@
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"/>
         </TableRow>
-
+        <TableRow>
+            <TextView
+                android:text="Assistant Camera Person Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_assistant_campers_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Dolly Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_dolly_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="VTR Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_vtr_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Switcher Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_switcher_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Support Quota"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_support_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"/>
+        </TableRow>
         <TableRow
             android:paddingTop="4dp"
             android:paddingBottom="4dp">
