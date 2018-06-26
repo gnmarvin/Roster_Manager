@@ -3,6 +3,7 @@ package id.ac.umn.mobile.rostermanager;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -50,6 +51,12 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
             @Override
             public void onClick(View v) {
                 Intent gotodetailplanevent = new Intent(mCtx, PlanEventDetailsActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("EVENT_NAME", planevent.getName_event_plan_event());
+                extras.putString("EVENT_START_DATE", planevent.getDate_plan_event());
+                extras.putString("EVENT_START_TIME", planevent.getTime_plan_event());
+                extras.putString("EVENT_COD", planevent.getCod_plan_event());
+                gotodetailplanevent.putExtras(extras);
                 mCtx.startActivity(gotodetailplanevent);
                 Toast.makeText(mCtx, planevent.getName_event_plan_event(),Toast.LENGTH_LONG).show();
             }
