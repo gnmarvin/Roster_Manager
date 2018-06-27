@@ -42,7 +42,7 @@ public class ViewProfile extends AppCompatActivity {
         mobile_line = extras.getString("MOBILE_LINE");
         contact_id = extras.getString("CONTACT_ID");
 
-        // QR code generator ini 
+        // QR code generator ini
         QRCodeWriter writer = new QRCodeWriter();
         ImageView contactIdQr = (ImageView) findViewById(R.id.qr_code_image);
         try {

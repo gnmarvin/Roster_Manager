@@ -15,14 +15,11 @@ import retrofit2.http.PUT;
  */
 
 public interface APIService {
-    @PUT("/auth/auth_login_rest")
+    @POST("/ccit_backend/auth/auth_rest/login")
     @FormUrlEncoded
     Call<JsonElement> Login(@Field("username") String username,
                                 @Field("password") String password);
-    @GET("auth/auth_login_rest")
-    Call<JsonElement> Loginpakeget();
-
-    @GET("/event/event_rest")
+    @GET("/ccit_backend/event_roster/event_roster_rest/list")
     Call<JsonElement> Event();
 
 //    @POST("signup.php")
