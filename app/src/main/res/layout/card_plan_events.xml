@@ -52,10 +52,29 @@
                     android:paddingBottom="4dp">
                     <!--TextView Time -->
                     <TextView
-                        android:id="@+id/txt_time_plan_event"
                         android:textSize="8pt"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="start"/>
+                    <TextView
+                        android:id="@+id/txt_time_start_plan_event"
+                        android:textSize="8pt"
+                        android:layout_width="match_parent"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        android:text="shift/time"/>
+                    <TextView
+                        android:textSize="8pt"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="end"/>
+                    <TextView
+                        android:id="@+id/txt_time_end_plan_event"
+                        android:textSize="8pt"
+                        android:layout_width="match_parent"
+                        android:layout_weight="2"
                         android:layout_height="wrap_content"
                         android:text="shift/time"/>
                 </TableRow>
@@ -117,32 +136,6 @@
                         android:text="Team"/>
                     <TextView
                         android:id="@+id/txt_campers_respond_plan_event"
-                        android:textSize="8pt"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="Respond"/>
-                </TableRow>
-                <TableRow
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp">
-                    <!--TextView Videographers Respond -->
-                    <TextView
-                        android:id="@+id/txt_video_plan_event"
-                        android:textSize="8pt"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content"
-                        android:text="Videographers"/>
-                    <TextView
-                        android:id="@+id/txt_video_team_plan_event"
-                        android:textSize="8pt"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="Team"/>
-                    <TextView
-                        android:id="@+id/txt_video_respond_plan_event"
                         android:textSize="8pt"
                         android:layout_width="0dp"
                         android:layout_weight="1"

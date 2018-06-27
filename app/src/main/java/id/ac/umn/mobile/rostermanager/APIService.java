@@ -19,8 +19,14 @@ public interface APIService {
     @FormUrlEncoded
     Call<JsonElement> Login(@Field("username") String username,
                                 @Field("password") String password);
+
+    /*
+    REST UNTUK MENGAMBIL DATA LIST EVENT dan LIST TEAM / JOB  yang bertugas di event tersebut
+     */
     @GET("/ccit_backend/event_roster/event_roster_rest/list")
     Call<JsonElement> Event();
+    @GET("/ccit_backend/event_roster/event_roster_rest/list_job")
+    Call<JsonElement>  Job(@Field("event_roster_id") String event_roster_id);
 
 //    @POST("signup.php")
 //    @FormUrlEncoded

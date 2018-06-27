@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class PlanEventDetailsActivity extends AppCompatActivity {
-    String event_name, event_start_date, event_start_time, event_cod;
-    EditText detail_event_name, detail_event_date, detail_event_time, edit_cod_event,
+    String event_name, event_start_date, event_start_time, event_end_time,event_cod;
+    EditText detail_event_name, detail_event_date, detail_event_time_start, detail_event_time_end, edit_cod_event,
     edit_photo_team, edit_campers_team, edit_photo_quota, edit_photo_tx_quota, edit_photo_pk_quota, edit_photo_extra_quota, edit_video_quota, edit_video_extra_quota,
     edit_campers_quota, edit_ast_campers_quota, edit_dolly_quota, edit_vtr_quota, edit_switcher_quota, edit_support_quota;
 
@@ -24,13 +24,17 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
         event_name = extras.getString("EVENT_NAME");
         event_start_date = extras.getString("EVENT_START_DATE");
         event_start_time = extras.getString("EVENT_START_TIME");
+        event_end_time = extras.getString("EVENT_END_TIME");
         event_cod = extras.getString("EVENT_COD");
+
         detail_event_name = findViewById(R.id.edit_name_event_plan_event);
         detail_event_name.setText(event_name);
         detail_event_date = findViewById(R.id.edit_date_event_plan_event);
         detail_event_date.setText(event_start_date);
-        detail_event_time = findViewById(R.id.edit_time_start_event_plan_event);
-        detail_event_time.setText(event_start_time);
+        detail_event_time_start = findViewById(R.id.edit_time_start_event_plan_event);
+        detail_event_time_start.setText(event_start_time);
+        detail_event_time_end = findViewById(R.id.edit_time_end_event_plan_event);
+        detail_event_time_end.setText(event_end_time);
         edit_cod_event = findViewById(R.id.edit_cod_event_plan_event);
         edit_cod_event.setText(event_cod);
 //        edit_photo_team x;

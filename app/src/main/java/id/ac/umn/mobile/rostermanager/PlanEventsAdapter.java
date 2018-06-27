@@ -40,7 +40,8 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
         final PlanEventsModel planevent = planEventsModelList.get(position);
         holder.textViewPlanEventNameEvent.setText(planevent.getName_event_plan_event());
         holder.textViewPlanEventDate.setText(planevent.getDate_plan_event());
-        holder.textViewPlanEventTime.setText(planevent.getTime_plan_event());
+        holder.textViewPlanEventTimeStart.setText(planevent.getTime_start_plan_event());
+        holder.textViewPlanEventTimeEnd.setText(planevent.getTime_end_plan_event());
         holder.textViewPlanEventCod.setText(planevent.getCod_plan_event());
         holder.textViewPlanEventPhotoTeam.setText(planevent.getPhoto_team_plan_event());
         holder.textViewPlanEventPhotoRespond.setText(planevent.getPhoto_respond_plan_event());
@@ -54,7 +55,8 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
                 Bundle extras = new Bundle();
                 extras.putString("EVENT_NAME", planevent.getName_event_plan_event());
                 extras.putString("EVENT_START_DATE", planevent.getDate_plan_event());
-                extras.putString("EVENT_START_TIME", planevent.getTime_plan_event());
+                extras.putString("EVENT_START_TIME", planevent.getTime_start_plan_event());
+                extras.putString("EVENT_END_TIME", planevent.getTime_end_plan_event());
                 extras.putString("EVENT_COD", planevent.getCod_plan_event());
                 gotodetailplanevent.putExtras(extras);
                 mCtx.startActivity(gotodetailplanevent);
@@ -71,7 +73,7 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
     public class PlanEventsViewHolder extends RecyclerView.ViewHolder{
         public CardView cardMain;
         public LinearLayout linearLayout;
-        TextView textViewPlanEventNameEvent, textViewPlanEventDate, textViewPlanEventTime, textViewPlanEventCod,
+        TextView textViewPlanEventNameEvent, textViewPlanEventDate, textViewPlanEventTimeStart, textViewPlanEventTimeEnd, textViewPlanEventCod,
         textViewPlanEventPhotoTeam, textViewPlanEventPhotoRespond, textViewPlanEventCampersTeam, textViewPlanEventCampersRespond;
 
         public PlanEventsViewHolder(View itemView) {
@@ -80,7 +82,8 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
             cardMain = (CardView) itemView.findViewById(R.id.card_item_event);
             textViewPlanEventNameEvent = itemView.findViewById(R.id.txt_name_event_plan_event);
             textViewPlanEventDate = itemView.findViewById(R.id.txt_date_plan_event);
-            textViewPlanEventTime = itemView.findViewById(R.id.txt_time_plan_event);
+            textViewPlanEventTimeStart = itemView.findViewById(R.id.txt_time_start_plan_event);
+            textViewPlanEventTimeEnd = itemView.findViewById(R.id.txt_time_start_plan_event);
             textViewPlanEventCod = itemView.findViewById(R.id.txt_cod_plan_event);
             textViewPlanEventPhotoTeam = itemView.findViewById(R.id.txt_photo_team_plan_event);
             textViewPlanEventPhotoRespond = itemView.findViewById(R.id.txt_photo_respond_plan_event);

@@ -3,7 +3,8 @@ package id.ac.umn.mobile.rostermanager;
 public class PlanEventsModel {
     private String name_event_plan_event ;
     private String date_plan_event;
-    private String time_plan_event;
+    private String time_start_plan_event;
+    private String time_end_plan_event;
     private String cod_plan_event;
     private String photo_respond_plan_event;
     private String campers_respond_plan_event;
@@ -11,11 +12,12 @@ public class PlanEventsModel {
     private String campers_team_plan_event;
 
 
-    public PlanEventsModel(String name_event_plan_event, String date_plan_event, String time_plan_event, String cod_plan_event,
+    public PlanEventsModel(String name_event_plan_event, String date_plan_event, String time_start_plan_event, String time_end_plan_event, String cod_plan_event,
                            String photo_team_plan_event, String photo_respond_plan_event, String campers_team_plan_event, String campers_respond_plan_event){
         this.name_event_plan_event = name_event_plan_event;
         this.date_plan_event = date_plan_event;
-        this.time_plan_event = time_plan_event;
+        this.time_start_plan_event = time_start_plan_event;
+        this.time_end_plan_event = time_end_plan_event;
         this.cod_plan_event = cod_plan_event;
         this.photo_team_plan_event = photo_team_plan_event;
         this.photo_respond_plan_event = photo_respond_plan_event;
@@ -31,8 +33,12 @@ public class PlanEventsModel {
         return date_plan_event;
     }
 
-    public String getTime_plan_event(){
-        return time_plan_event;
+    public String getTime_start_plan_event(){
+        return time_start_plan_event;
+    }
+
+    public String getTime_end_plan_event(){
+        return time_start_plan_event;
     }
 
     public String getCod_plan_event(){
@@ -55,8 +61,12 @@ public class PlanEventsModel {
         this.date_plan_event = date_plan_event;
     }
 
-    public void setTime_plan_event(String time_plan_event){
-        this.time_plan_event = time_plan_event;
+    public void setTime_start_plan_event(String time_start__plan_event){
+        this.time_start_plan_event = time_start_plan_event;
+    }
+
+    public void setTime_end_plan_event(String time_end_plan_event){
+        this.time_end_plan_event = time_end_plan_event;
     }
 
     public void setCod_plan_event(String cod_plan_event){
