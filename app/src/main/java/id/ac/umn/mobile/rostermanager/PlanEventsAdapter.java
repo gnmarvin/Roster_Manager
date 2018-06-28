@@ -83,7 +83,7 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
             textViewPlanEventNameEvent = itemView.findViewById(R.id.txt_name_event_plan_event);
             textViewPlanEventDate = itemView.findViewById(R.id.txt_date_plan_event);
             textViewPlanEventTimeStart = itemView.findViewById(R.id.txt_time_start_plan_event);
-            textViewPlanEventTimeEnd = itemView.findViewById(R.id.txt_time_start_plan_event);
+            textViewPlanEventTimeEnd = itemView.findViewById(R.id.txt_time_end_plan_event);
             textViewPlanEventCod = itemView.findViewById(R.id.txt_cod_plan_event);
             textViewPlanEventPhotoTeam = itemView.findViewById(R.id.txt_photo_team_plan_event);
             textViewPlanEventPhotoRespond = itemView.findViewById(R.id.txt_photo_respond_plan_event);

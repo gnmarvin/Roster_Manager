@@ -27,9 +27,19 @@ import retrofit2.Response;
 public class PlanEventsFragment extends Fragment {
     List<PlanEventsModel> planEventList;
     RecyclerView rv;
-    String[] event_id, event_name , event_start_date, event_start_time, event_end_time,
-            cod, team_photo, team_campers;
-    int[] quota_photo, quota_campers;
+    String set_event_name, set_event_id, set_cod, set_event_end_time, set_event_start_time, set_event_start_date;
+    String[] event_id = new String[20];
+    String[] event_name = new String[20];
+    String[] event_start_date = new String[20];
+    String[] event_start_time = new String[20];
+    String[] event_end_time = new String[20];
+    String[] cod = new String[20];
+    String[] team_photo = new String[20];
+    String[] team_campers = new String[20];
+    int[] quota_photo = new int[20];
+    int[] quota_campers = new int[20];
+    int index = 0;
+    int size; // deklarasi variable untuk menyimpan banyaknya data event yang ada
 
     @Nullable
     @Override
@@ -37,7 +47,6 @@ public class PlanEventsFragment extends Fragment {
         //get recyclerview from fragmentevent.xml
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_plan_events, container, false);
-
         rv = (RecyclerView) rootView.findViewById(R.id.recycler_plan_events);
         rv.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -48,7 +57,7 @@ public class PlanEventsFragment extends Fragment {
         /*
         UNTUK AMBIL DATA LIST EVENT
          */
-        final int[] datasize = new int[1]; // deklarasi variable untuk menyimpan banyaknya data event yang ada
+
 
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
         retrofit2.Call<JsonElement> listEvent = webServiceAPI.Event();
@@ -59,16 +68,15 @@ public class PlanEventsFragment extends Fragment {
                 JsonObject obj = element.getAsJsonObject();
                 JsonArray data = obj.get("event_roster").getAsJsonArray();
 
-                datasize[0] = data.size(); //mendapatkan nilai banyaknya data event yang ada
-
-                for (int i = 0; i < data.size(); i++) {
-                    JsonObject singleData = data.get(i).getAsJsonObject();
-                    event_name[i]  = singleData.get("event_name").getAsString();
-                    event_start_date[i] = singleData.get("roster_date").getAsString();
-                    event_start_time[i] = singleData.get("roster_start_time").getAsString();
-                    event_end_time[i] = singleData.get("roster_end_time").getAsString();
-                    cod[i] = singleData.get("cod_full_name").getAsString();
-                    event_id[i] = singleData.get("id").getAsString();
+                for (size = 0; size < data.size(); size++) {
+                    JsonObject singleData = data.get(size).getAsJsonObject();
+                    set_event_name  = singleData.get("event_name").getAsString();
+                    set_event_start_date = singleData.get("roster_date").getAsString();
+                    set_event_start_time = singleData.get("roster_start_time").getAsString();
+                    set_event_end_time = singleData.get("roster_end_time").getAsString();
+                    set_cod = singleData.get("cod_full_name").getAsString();
+                    set_event_id = singleData.get("id").getAsString();
+                    setter(set_event_id, set_event_name, set_event_start_date, set_event_start_time, set_event_end_time, set_cod, size);
                 }
             }
             @Override
@@ -77,59 +85,13 @@ public class PlanEventsFragment extends Fragment {
             }
         });
 
-
         /*
         UNTUK AMBIL DATA LIST JOB / TEAM DI SUATU EVENT
          */
-        for(int i = 0; i < datasize[0]; i++){
-            retrofit2.Call<JsonElement> listJob = webServiceAPI.Job(event_id[i]);
-            final int event_pos = i;
-            listJob.enqueue(new Callback<JsonElement>() {
-                @Override
-                public void onResponse(retrofit2.Call<JsonElement> call, Response<JsonElement> response) {
-                    JsonElement element = response.body();
-                    JsonObject obj = element.getAsJsonObject();
-                    JsonArray data = obj.get("event_roster_job").getAsJsonArray();
-                    for (int j = 0; j < data.size(); j++) {
-                        JsonObject singleData = data.get(j).getAsJsonObject();
-                        if(singleData.get("organization_code").getAsString().contains("PHOTO"))
-                        {
-                            team_photo[event_pos] = singleData.get("organiztion_name").getAsString();
-                            quota_photo[event_pos] += singleData.get("roster_job_quota").getAsInt();
 
-                        }
-                        else if(singleData.get("organization_code").getAsString().contains("CAMPERS"))
-                        {
-                            team_campers[event_pos] = singleData.get("organiztion_name").getAsString();
-                            quota_campers[event_pos] += singleData.get("roster_job_quota").getAsInt();
-                        }
-                    }
-                }
-                @Override
-                public void onFailure(retrofit2.Call<JsonElement> call, Throwable t) {
-
-                }
-            });
-        }
 
 
         /* display data yang sudah diambil dari kedua rest json ke adapter */
-        for (int i = 0; i < datasize[0]; i++) {
-            planEventList.add(
-                    new PlanEventsModel(
-                            event_name[i],
-                            event_start_date[i],
-                            event_start_time[i],
-                            event_end_time[i],
-                            cod[i],
-                            team_photo[i],
-                            "/".concat(String.valueOf(quota_photo[i])),
-                            team_campers[i],
-                            "/".concat(String.valueOf(quota_campers[i]))));
-        }
-        PlanEventsAdapter adapter = new PlanEventsAdapter(getContext(), planEventList);
-
-        rv.setAdapter(adapter);
 
         return rootView;
     }
@@ -140,6 +102,64 @@ public class PlanEventsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle("Plan Events");
+    }
+
+    public void setter(String set_event_id, String set_event_name, String set_event_start_date, String set_event_start_time, String set_event_end_time, String set_cod, final Integer size){
+        Toast.makeText(getContext(), size.toString(), Toast.LENGTH_SHORT).show();
+        event_name[size] = set_event_name;
+        event_id[size] = set_event_id;
+        event_start_date[size] = set_event_start_date;
+        event_start_time[size] = set_event_start_time;
+        event_end_time[size] = set_event_end_time;
+        cod[size] = set_cod;
+        APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
+        retrofit2.Call<JsonElement> listJob = webServiceAPI.Job(event_id[size]);
+        listJob.enqueue(new Callback<JsonElement>() {
+            @Override
+            public void onResponse(retrofit2.Call<JsonElement> call, Response<JsonElement> response) {
+                JsonElement element = response.body();
+                JsonObject obj = element.getAsJsonObject();
+                JsonArray data = obj.get("event_roster_job").getAsJsonArray();
+                for (int j = 0; j < data.size(); j++) {
+                    JsonObject singleData = data.get(j).getAsJsonObject();
+                    if(singleData.get("organization_code").getAsString().contains("PHOTO"))
+                    {
+                        //Toast.makeText(getContext(), singleData.get("organization_name").getAsString()+index, Toast.LENGTH_SHORT).show();
+                        team_photo[size] = singleData.get("organization_name").getAsString();
+                        quota_photo[size] += singleData.get("roster_job_quota").getAsInt();
+
+                    }
+                    else if(singleData.get("organization_code").getAsString().contains("CAMPERS"))
+                    {
+                        //Toast.makeText(getContext(), singleData.get("organization_name").getAsString()+index, Toast.LENGTH_SHORT).show();
+                        team_campers[size] = singleData.get("organization_name").getAsString();
+                        quota_campers[size] += singleData.get("roster_job_quota").getAsInt();
+                    }
+                }
+                Toast.makeText(getContext(), team_photo[size], Toast.LENGTH_SHORT).show();
+                addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team_photo[size], quota_photo[size], team_campers[size], quota_campers[size]);
+            }
+            @Override
+            public void onFailure(retrofit2.Call<JsonElement> call, Throwable t) {
+                }
+        });
+    }
+
+    public void addtoCard(String set_event_name, String set_event_start_date, String set_event_start_time, String set_event_end_time, String set_cod, String set_team_photo, int set_quota_photo, String set_team_campers, int set_quota_campers){
+        planEventList.add(
+                new PlanEventsModel(
+                       set_event_name,
+                        set_event_start_date,
+                        set_event_start_time,
+                        set_event_end_time,
+                        set_cod,
+                        set_team_photo,
+                        Integer.toString(set_quota_photo),
+                        set_team_campers,
+                        Integer.toString(set_quota_campers)));
+        PlanEventsAdapter adapter = new PlanEventsAdapter(getContext(), planEventList);
+
+        rv.setAdapter(adapter);
     }
 
 

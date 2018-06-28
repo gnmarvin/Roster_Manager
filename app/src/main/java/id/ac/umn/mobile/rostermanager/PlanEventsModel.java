@@ -38,7 +38,7 @@ public class PlanEventsModel {
     }
 
     public String getTime_end_plan_event(){
-        return time_start_plan_event;
+        return time_end_plan_event;
     }
 
     public String getCod_plan_event(){

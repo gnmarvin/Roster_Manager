@@ -9,6 +9,8 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by Marvin on 6/5/2018.
@@ -26,7 +28,7 @@ public interface APIService {
     @GET("/ccit_backend/event_roster/event_roster_rest/list")
     Call<JsonElement> Event();
     @GET("/ccit_backend/event_roster/event_roster_rest/list_job")
-    Call<JsonElement>  Job(@Field("event_roster_id") String event_roster_id);
+    Call<JsonElement>  Job(@Query("event_roster_id") String event_roster_id);
 
 //    @POST("signup.php")
 //    @FormUrlEncoded
