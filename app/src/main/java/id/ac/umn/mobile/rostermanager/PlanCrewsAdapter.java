@@ -37,7 +37,8 @@ public class PlanCrewsAdapter extends RecyclerView.Adapter<PlanCrewsAdapter.Plan
         final PlanCrewsModel plancrew = planCrewsModelList.get(position);
         holder.textViewPlanCrewNameEvent.setText(plancrew.getName_event_plan_crew());
         holder.textViewPlanCrewDate.setText(plancrew.getDate_plan_crew());
-        holder.textViewPlanCrewTime.setText(plancrew.getTime_plan_crew());
+        holder.textViewPlanCrewTimeStart.setText(plancrew.getTime_start_plan_crew());
+        holder.textViewPlanCrewTimeEnd.setText(plancrew.getTime_end_plan_crew());
         holder.textViewPlanCrewCod.setText(plancrew.getCod_plan_crew());
         holder.textViewPlanCrewTeam.setText(plancrew.getTeam_plan_crew());
         holder.textViewPlanCrewRespond.setText(plancrew.getRespond_plan_crew());
@@ -58,14 +59,15 @@ public class PlanCrewsAdapter extends RecyclerView.Adapter<PlanCrewsAdapter.Plan
     }
 
     public class PlanCrewsViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewPlanCrewNameEvent, textViewPlanCrewDate, textViewPlanCrewTime, textViewPlanCrewCod, textViewPlanCrewTeam, textViewPlanCrewRespond;
+        TextView textViewPlanCrewNameEvent, textViewPlanCrewDate, textViewPlanCrewTimeStart, textViewPlanCrewTimeEnd, textViewPlanCrewCod, textViewPlanCrewTeam, textViewPlanCrewRespond;
         public LinearLayout linearLayout;
         public PlanCrewsViewHolder(View itemView) {
             super(itemView);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linear_plan_crew);
             textViewPlanCrewNameEvent = itemView.findViewById(R.id.txt_name_event_plan_crew);
             textViewPlanCrewDate = itemView.findViewById(R.id.txt_date_plan_crew);
-            textViewPlanCrewTime = itemView.findViewById(R.id.txt_time_plan_crew);
+            textViewPlanCrewTimeStart = itemView.findViewById(R.id.txt_time_start_plan_crew);
+            textViewPlanCrewTimeEnd = itemView.findViewById(R.id.txt_time_end_plan_crew);
             textViewPlanCrewCod = itemView.findViewById(R.id.txt_cod_plan_crew);
             textViewPlanCrewTeam = itemView.findViewById(R.id.txt_team_plan_crew);
             textViewPlanCrewRespond = itemView.findViewById(R.id.txt_respond_plan_crew);

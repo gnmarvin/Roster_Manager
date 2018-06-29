@@ -56,7 +56,7 @@ public class PlanEventsFragment extends Fragment {
         planEventList = new ArrayList<>(); // untuk menyimpan list event yang ada
 
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-        retrofit2.Call<JsonElement> listEvent = webServiceAPI.Event();
+        retrofit2.Call<JsonElement> listEvent = webServiceAPI.EventRoster();
         listEvent.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(retrofit2.Call<JsonElement> call, Response<JsonElement> response) {
@@ -69,7 +69,12 @@ public class PlanEventsFragment extends Fragment {
                     set_event_start_date = singleData.get("roster_date").getAsString();
                     set_event_start_time = singleData.get("roster_start_time").getAsString();
                     set_event_end_time = singleData.get("roster_end_time").getAsString();
-                    set_cod = singleData.get("cod_full_name").getAsString();
+                    if (singleData.get("cod_full_name").isJsonNull()) {
+                        set_cod = "COD";
+                    }
+                    else{
+                        set_cod = singleData.get("cod_full_name").getAsString();
+                    }
                     set_event_id = singleData.get("id").getAsString();
                     setter(set_event_id, set_event_name, set_event_start_date, set_event_start_time, set_event_end_time, set_cod, size);
                 }
@@ -107,7 +112,7 @@ public class PlanEventsFragment extends Fragment {
         event_end_time[size] = set_event_end_time;
         cod[size] = set_cod;
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-        retrofit2.Call<JsonElement> listJob = webServiceAPI.Job(event_id[size]);
+        retrofit2.Call<JsonElement> listJob = webServiceAPI.JobRoster(event_id[size]);
         listJob.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(retrofit2.Call<JsonElement> call, Response<JsonElement> response) {
@@ -116,15 +121,23 @@ public class PlanEventsFragment extends Fragment {
                 JsonArray data = obj.get("event_roster_job").getAsJsonArray();
                 for (int j = 0; j < data.size(); j++) {
                     JsonObject singleData = data.get(j).getAsJsonObject();
-                    if(singleData.get("organization_code").getAsString().contains("PHOTO"))
-                    {
-                        team_photo[size] = singleData.get("organization_name").getAsString();
-                        quota_photo[size] += singleData.get("roster_job_quota").getAsInt();
+                    if(singleData.get("organization_code").isJsonNull()){
+                        team_photo[size] = "Photographers";
+                        quota_photo[size] = 0;
+                        team_campers[size] = "Camera Persons";
+                        quota_campers[size] = 0;
                     }
-                    else if(singleData.get("organization_code").getAsString().contains("CAMPERS"))
-                    {
-                        team_campers[size] = singleData.get("organization_name").getAsString();
-                        quota_campers[size] += singleData.get("roster_job_quota").getAsInt();
+                    else{
+                        if(singleData.get("organization_code").getAsString().contains("PHOTO"))
+                        {
+                            team_photo[size] = singleData.get("organization_name").getAsString();
+                            quota_photo[size] += singleData.get("roster_job_quota").getAsInt();
+                        }
+                        else if(singleData.get("organization_code").getAsString().contains("CAMPERS"))
+                        {
+                            team_campers[size] = singleData.get("organization_name").getAsString();
+                            quota_campers[size] += singleData.get("roster_job_quota").getAsInt();
+                        }
                     }
                 }
                 addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team_photo[size], quota_photo[size], team_campers[size], quota_campers[size]);

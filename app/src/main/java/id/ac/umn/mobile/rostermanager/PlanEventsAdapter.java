@@ -9,11 +9,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 import java.util.List;
+
+import retrofit2.Call;
 
 public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.PlanEventsViewHolder>{
 
@@ -62,6 +68,21 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
                 mCtx.startActivity(gotodetailplanevent);
             }
         });
+        //click delete button
+        holder.deleteEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
+//                Call<JsonElement> delete = webServiceAPI.DeleteEventRoster();
+
+                JsonObject obj = new JsonObject();
+                JsonObject id = new JsonObject();
+                id.addProperty("id","abd661d32153fad2a6f54952eb831def");
+                obj.add("id",id);
+
+                service.dele
+            }
+        });
     }
 
     @Override
@@ -74,11 +95,15 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
         public LinearLayout linearLayout;
         TextView textViewPlanEventNameEvent, textViewPlanEventDate, textViewPlanEventTimeStart, textViewPlanEventTimeEnd, textViewPlanEventCod,
         textViewPlanEventPhotoTeam, textViewPlanEventPhotoRespond, textViewPlanEventCampersTeam, textViewPlanEventCampersRespond;
+        Button deleteEvent, lockEvent, unlockEvent;
 
         public PlanEventsViewHolder(View itemView) {
             super(itemView);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linear_plan_event);
             cardMain = (CardView) itemView.findViewById(R.id.card_item_event);
+            deleteEvent = itemView.findViewById(R.id.delete_plan_event);
+            lockEvent = itemView.findViewById(R.id.lock_plan_event);
+            unlockEvent = itemView.findViewById(R.id.unlock_plan_event);
             textViewPlanEventNameEvent = itemView.findViewById(R.id.txt_name_event_plan_event);
             textViewPlanEventDate = itemView.findViewById(R.id.txt_date_plan_event);
             textViewPlanEventTimeStart = itemView.findViewById(R.id.txt_time_start_plan_event);

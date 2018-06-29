@@ -2,8 +2,11 @@ package id.ac.umn.mobile.rostermanager;
 
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -26,9 +29,22 @@ public interface APIService {
     REST UNTUK MENGAMBIL DATA LIST EVENT dan LIST TEAM / JOB  yang bertugas di event tersebut
      */
     @GET("/ccit_backend/event_roster/event_roster_rest/list")
-    Call<JsonElement> Event();
+    Call<JsonElement> EventRoster();
     @GET("/ccit_backend/event_roster/event_roster_rest/list_job")
-    Call<JsonElement>  Job(@Query("event_roster_id") String event_roster_id);
+    Call<JsonElement>  JobRoster(@Query("event_roster_id") String event_roster_id);
+
+    @GET("/ccit_backend/event/event_rest/list")
+    Call<JsonElement> EventList();
+    @GET("/ccit_backend/organization/organization_rest/list")
+    Call<JsonElement> TeamList();
+
+    @POST("/ccit_backend/event_roster/event_roster_rest/delete")
+    void deleteEventRoster(@Body JsonObject bean, Callback<JsonObject> callback);
+
+//    @POST("/ccit_backend/event_roster/event_roster_rest/add")
+//    @FormUrlEncoded
+//    Call<JsonElement>;
+
 
 //    @POST("signup.php")
 //    @FormUrlEncoded
