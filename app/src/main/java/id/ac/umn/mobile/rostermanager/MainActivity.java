@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     String mobile_whatsapp = "";
     String mobile_line = "";
     String contact_id = "";
+    String role = "";
     TextView header_username;           //variable buat text dibawah header picture
     ImageView profilePicture;
     @Override
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mobile_whatsapp = extras.getString("MOBILE_WHATSAPP");
         mobile_line = extras.getString("MOBILE_LINE");
         contact_id = extras.getString("CONTACT_ID");
+        role = extras.getString("ROLE");
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 

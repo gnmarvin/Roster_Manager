@@ -3,6 +3,7 @@ package id.ac.umn.mobile.rostermanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -77,6 +78,18 @@ public class PlanEventsFragment extends Fragment {
             public void onFailure(retrofit2.Call<JsonElement> call, Throwable t) {
             }
         });
+        FloatingActionButton fab = rootView.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addEvent = new Intent(getContext(), PlanEventDetailsActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("NEW", "new");
+                addEvent.putExtras(extras);
+                startActivity(addEvent);
+            }
+        });
+
         return rootView;
     }
     @Override
@@ -87,7 +100,6 @@ public class PlanEventsFragment extends Fragment {
     }
 
     public void setter(String set_event_id, String set_event_name, String set_event_start_date, String set_event_start_time, String set_event_end_time, String set_cod, final Integer size){
-        Toast.makeText(getContext(), size.toString(), Toast.LENGTH_SHORT).show();
         event_name[size] = set_event_name;
         event_id[size] = set_event_id;
         event_start_date[size] = set_event_start_date;

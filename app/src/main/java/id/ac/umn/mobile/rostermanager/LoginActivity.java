@@ -83,13 +83,14 @@ public class LoginActivity extends AppCompatActivity {
                                 loginPrefEditor.commit();
                             }
                             JsonObject profile = obj.get("profile").getAsJsonObject();
+                            JsonObject roles = obj.get("role").getAsJsonObject();
                             String full_name = profile.get("full_name").getAsString();
                             String email = profile.get("email").getAsString();
                             String mobile_no = profile.get("mobile_no").getAsString();
                             String mobile_whatsapp = profile.get("mobile_whatsapp").getAsString();
                             String mobile_line = profile.get("mobile_line").getAsString();
                             String contact_id = profile.get("contact_id").getAsString();
-                            String role = profile.get("role").getAsString();
+                            String role = roles.get("role").getAsString();
                             Intent i = new Intent(LoginActivity.this, MainActivity.class);
                             Bundle extras = new Bundle();
                             extras.putString("USERNAME", full_name);

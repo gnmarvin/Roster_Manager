@@ -40,9 +40,15 @@
                     android:paddingBottom="4dp">
                     <!--TextView Date -->
                     <TextView
+                        android:textSize="8pt"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Date"/>
+                    <TextView
                         android:id="@+id/txt_date_plan_event"
                         android:textSize="8pt"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="date"/>
@@ -53,54 +59,52 @@
                     <!--TextView Time -->
                     <TextView
                         android:textSize="8pt"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="start"/>
+                        android:text="Time"/>
                     <TextView
                         android:id="@+id/txt_time_start_plan_event"
                         android:textSize="8pt"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_weight="2"
                         android:layout_height="wrap_content"
-                        android:text="shift/time"/>
+                        android:text="start"/>
                     <TextView
                         android:textSize="8pt"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="end"/>
+                        android:text="-"/>
                     <TextView
                         android:id="@+id/txt_time_end_plan_event"
                         android:textSize="8pt"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_weight="2"
                         android:layout_height="wrap_content"
-                        android:text="shift/time"/>
+                        android:text="end"/>
                 </TableRow>
                 <TableRow
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp">
                     <!--TextView COD -->
                     <TextView
-                        android:id="@+id/txt_cod_plan_event"
                         android:textSize="8pt"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="COD"/>
+                    <TextView
+                        android:id="@+id/txt_cod_plan_event"
+                        android:textSize="8pt"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
                 </TableRow>
                 <TableRow
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp">
                     <!--TextView Photo Respond -->
-                    <TextView
-                        android:id="@+id/txt_photo_plan_event"
-                        android:textSize="8pt"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content"
-                        android:text="Photographers"/>
                     <TextView
                         android:id="@+id/txt_photo_team_plan_event"
                         android:textSize="8pt"
@@ -112,7 +116,7 @@
                         android:id="@+id/txt_photo_respond_plan_event"
                         android:textSize="8pt"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="0.5"
                         android:layout_height="wrap_content"
                         android:text="Respond"/>
                 </TableRow>
@@ -120,13 +124,6 @@
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp">
                     <!--TextView Campers Respond -->
-                    <TextView
-                        android:id="@+id/txt_campers_plan_event"
-                        android:textSize="8pt"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content"
-                        android:text="Campers"/>
                     <TextView
                         android:id="@+id/txt_campers_team_plan_event"
                         android:textSize="8pt"
@@ -138,7 +135,7 @@
                         android:id="@+id/txt_campers_respond_plan_event"
                         android:textSize="8pt"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="0.5"
                         android:layout_height="wrap_content"
                         android:text="Respond"/>
                 </TableRow>

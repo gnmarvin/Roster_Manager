@@ -36,7 +36,8 @@
         <activity
             android:name=".ViewProfile"
             android:label="@string/profile_activity" />
-        <activity android:name=".PlanEventDetailsActivity" />
+        <activity android:name=".PlanEventDetailsActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".PlanCrewsDetailsActivity" />
         <activity android:name=".InsidePlanCrewsDetailsActivity" />
         <activity android:name=".BlockoutDatesEditActivity" />

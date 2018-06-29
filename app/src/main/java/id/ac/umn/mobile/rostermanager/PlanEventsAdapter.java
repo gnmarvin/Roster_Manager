@@ -60,7 +60,6 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
                 extras.putString("EVENT_COD", planevent.getCod_plan_event());
                 gotodetailplanevent.putExtras(extras);
                 mCtx.startActivity(gotodetailplanevent);
-                Toast.makeText(mCtx, planevent.getName_event_plan_event(),Toast.LENGTH_LONG).show();
             }
         });
     }

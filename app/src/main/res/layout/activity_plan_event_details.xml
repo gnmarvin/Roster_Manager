@@ -126,32 +126,6 @@
         </TableRow>
         <TableRow>
             <TextView
-                android:text="Videographer Team"
-                android:layout_weight="1"
-                android:textSize="8pt"
-                android:layout_gravity="center_vertical"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp" />
-            <TableRow
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content">
-                <AutoCompleteTextView
-                    android:id="@+id/edit_video_event_plan_event"
-                    android:layout_weight="1"
-                    android:textSize="8pt"
-                    android:layout_height="wrap_content"
-                    android:layout_width="0dp"/>
-                <ImageView
-                    android:id="@+id/drop_down_video_team_event_plan_event"
-                    android:src="@drawable/chevron_down"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"/>
-            </TableRow>
-        </TableRow>
-        <TableRow>
-            <TextView
                 android:text="Camera Person Team"
                 android:layout_weight="1"
                 android:textSize="8pt"

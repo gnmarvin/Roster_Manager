@@ -21,22 +21,23 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
         
         Intent detailEvent = getIntent();
         Bundle extras = detailEvent.getExtras();
-        event_name = extras.getString("EVENT_NAME");
-        event_start_date = extras.getString("EVENT_START_DATE");
-        event_start_time = extras.getString("EVENT_START_TIME");
-        event_end_time = extras.getString("EVENT_END_TIME");
-        event_cod = extras.getString("EVENT_COD");
+        if (extras.getString("NEW") == null) {
+            event_name = extras.getString("EVENT_NAME");
+            event_start_date = extras.getString("EVENT_START_DATE");
+            event_start_time = extras.getString("EVENT_START_TIME");
+            event_end_time = extras.getString("EVENT_END_TIME");
+            event_cod = extras.getString("EVENT_COD");
 
-        detail_event_name = findViewById(R.id.edit_name_event_plan_event);
-        detail_event_name.setText(event_name);
-        detail_event_date = findViewById(R.id.edit_date_event_plan_event);
-        detail_event_date.setText(event_start_date);
-        detail_event_time_start = findViewById(R.id.edit_time_start_event_plan_event);
-        detail_event_time_start.setText(event_start_time);
-        detail_event_time_end = findViewById(R.id.edit_time_end_event_plan_event);
-        detail_event_time_end.setText(event_end_time);
-        edit_cod_event = findViewById(R.id.edit_cod_event_plan_event);
-        edit_cod_event.setText(event_cod);
+            detail_event_name = findViewById(R.id.edit_name_event_plan_event);
+            detail_event_name.setText(event_name);
+            detail_event_date = findViewById(R.id.edit_date_event_plan_event);
+            detail_event_date.setText(event_start_date);
+            detail_event_time_start = findViewById(R.id.edit_time_start_event_plan_event);
+            detail_event_time_start.setText(event_start_time);
+            detail_event_time_end = findViewById(R.id.edit_time_end_event_plan_event);
+            detail_event_time_end.setText(event_end_time);
+            edit_cod_event = findViewById(R.id.edit_cod_event_plan_event);
+            edit_cod_event.setText(event_cod);
 //        edit_photo_team x;
 //        edit_campers_team x;
 //        edit_photo_quota x;
@@ -51,6 +52,9 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
 //        edit_vtr_quota x;
 //        edit_switcher_quota x;
 //        edit_support_quota x;
+        } else if (extras.getString("NEW") != null) {
+            addNewEvent();
+        }
     }
 
     public void showDatePickerDialog(View v) {
@@ -83,5 +87,9 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
         } else if (endEventTime.isFocused()) {
             endEventTime.setText(timeMessage);
         }
+    }
+
+    public void addNewEvent() {
+
     }
 }
