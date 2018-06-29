@@ -54,11 +54,6 @@ public class PlanEventsFragment extends Fragment {
 
         planEventList = new ArrayList<>(); // untuk menyimpan list event yang ada
 
-        /*
-        UNTUK AMBIL DATA LIST EVENT
-         */
-
-
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
         retrofit2.Call<JsonElement> listEvent = webServiceAPI.Event();
         listEvent.enqueue(new Callback<JsonElement>() {
@@ -67,7 +62,6 @@ public class PlanEventsFragment extends Fragment {
                 JsonElement element = response.body();
                 JsonObject obj = element.getAsJsonObject();
                 JsonArray data = obj.get("event_roster").getAsJsonArray();
-
                 for (size = 0; size < data.size(); size++) {
                     JsonObject singleData = data.get(size).getAsJsonObject();
                     set_event_name  = singleData.get("event_name").getAsString();
@@ -81,22 +75,10 @@ public class PlanEventsFragment extends Fragment {
             }
             @Override
             public void onFailure(retrofit2.Call<JsonElement> call, Throwable t) {
-
             }
         });
-
-        /*
-        UNTUK AMBIL DATA LIST JOB / TEAM DI SUATU EVENT
-         */
-
-
-
-        /* display data yang sudah diambil dari kedua rest json ke adapter */
-
         return rootView;
     }
-
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -124,19 +106,15 @@ public class PlanEventsFragment extends Fragment {
                     JsonObject singleData = data.get(j).getAsJsonObject();
                     if(singleData.get("organization_code").getAsString().contains("PHOTO"))
                     {
-                        //Toast.makeText(getContext(), singleData.get("organization_name").getAsString()+index, Toast.LENGTH_SHORT).show();
                         team_photo[size] = singleData.get("organization_name").getAsString();
                         quota_photo[size] += singleData.get("roster_job_quota").getAsInt();
-
                     }
                     else if(singleData.get("organization_code").getAsString().contains("CAMPERS"))
                     {
-                        //Toast.makeText(getContext(), singleData.get("organization_name").getAsString()+index, Toast.LENGTH_SHORT).show();
                         team_campers[size] = singleData.get("organization_name").getAsString();
                         quota_campers[size] += singleData.get("roster_job_quota").getAsInt();
                     }
                 }
-                Toast.makeText(getContext(), team_photo[size], Toast.LENGTH_SHORT).show();
                 addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team_photo[size], quota_photo[size], team_campers[size], quota_campers[size]);
             }
             @Override
@@ -158,9 +136,6 @@ public class PlanEventsFragment extends Fragment {
                         set_team_campers,
                         Integer.toString(set_quota_campers)));
         PlanEventsAdapter adapter = new PlanEventsAdapter(getContext(), planEventList);
-
         rv.setAdapter(adapter);
     }
-
-
 }
