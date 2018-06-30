@@ -8,6 +8,7 @@ public class PlanCrewsModel {
     private String cod_plan_crew;
     private String respond_plan_crew;
     private String team_plan_crew;
+    private String event_id;
 
 
     public PlanCrewsModel(String name_event_plan_crew, String date_plan_crew, String time_start_plan_crew, String time_end_plan_crew, String cod_plan_crew,
@@ -76,4 +77,14 @@ public class PlanCrewsModel {
     public void setTeam_plan_crew(String team_plan_crew) {
         this.team_plan_crew = team_plan_crew;
     }
+
+
+    public String getEvent_id() {
+        return event_id;
+    }
+
+    public void setEvent_id(String event_id) {
+        this.event_id = event_id;
+    }
+
 }

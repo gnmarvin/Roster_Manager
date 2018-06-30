@@ -14,12 +14,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.PlanEventsViewHolder>{
 
@@ -72,15 +76,30 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
         holder.deleteEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-//                Call<JsonElement> delete = webServiceAPI.DeleteEventRoster();
+                Toast.makeText(mCtx, planevent.getEvent_id_plant_event(), Toast.LENGTH_SHORT).show();
+                APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
+                retrofit2.Call<JsonElement> deleteEventRoster = webServiceAPI.DeleteEventRoster(planevent.getEvent_id_plant_event());
+                
+                deleteEventRoster.enqueue(new Callback<JsonElement>() {
+                    @Override
+                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                        JsonElement element = response.body();
+                        JsonObject obj = element.getAsJsonObject();
+                        JsonObject error = obj.get("error").getAsJsonObject();
+                        String error_code = error.get("error_code").getAsString();
+                        if(error_code.equals(0)){
+                            Toast.makeText(mCtx, planevent.getEvent_id_plant_event()+" ok", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(mCtx, "fail", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
-                JsonObject obj = new JsonObject();
-                JsonObject id = new JsonObject();
-                id.addProperty("id","abd661d32153fad2a6f54952eb831def");
-                obj.add("id",id);
+                    @Override
+                    public void onFailure(Call<JsonElement> call, Throwable t) {
 
-                service.dele
+                    }
+                });
             }
         });
     }
@@ -91,8 +110,8 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
     }
 
     public class PlanEventsViewHolder extends RecyclerView.ViewHolder{
-        public CardView cardMain;
-        public LinearLayout linearLayout;
+        CardView cardMain;
+        LinearLayout linearLayout;
         TextView textViewPlanEventNameEvent, textViewPlanEventDate, textViewPlanEventTimeStart, textViewPlanEventTimeEnd, textViewPlanEventCod,
         textViewPlanEventPhotoTeam, textViewPlanEventPhotoRespond, textViewPlanEventCampersTeam, textViewPlanEventCampersRespond;
         Button deleteEvent, lockEvent, unlockEvent;

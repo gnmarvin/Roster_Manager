@@ -4,6 +4,7 @@ package id.ac.umn.mobile.rostermanager;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.http.Body;
@@ -39,7 +40,8 @@ public interface APIService {
     Call<JsonElement> TeamList();
 
     @POST("/ccit_backend/event_roster/event_roster_rest/delete")
-    void deleteEventRoster(@Body JsonObject bean, Callback<JsonObject> callback);
+    @FormUrlEncoded
+    Call<JsonElement> DeleteEventRoster(@Field("id") String deleted_roster_id);
 
 //    @POST("/ccit_backend/event_roster/event_roster_rest/add")
 //    @FormUrlEncoded

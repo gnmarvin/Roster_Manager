@@ -39,7 +39,6 @@ public class PlanEventsFragment extends Fragment {
     String[] team_campers = new String[20];
     int[] quota_photo = new int[20];
     int[] quota_campers = new int[20];
-    int index = 0;
     int size; // deklarasi variable untuk menyimpan banyaknya data event yang ada
 
     @Nullable
@@ -140,18 +139,18 @@ public class PlanEventsFragment extends Fragment {
                         }
                     }
                 }
-                addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team_photo[size], quota_photo[size], team_campers[size], quota_campers[size]);
+                addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team_photo[size], quota_photo[size], team_campers[size], quota_campers[size], event_id[size]);
             }
             @Override
             public void onFailure(retrofit2.Call<JsonElement> call, Throwable t) {
-                }
+            }
         });
     }
 
-    public void addtoCard(String set_event_name, String set_event_start_date, String set_event_start_time, String set_event_end_time, String set_cod, String set_team_photo, int set_quota_photo, String set_team_campers, int set_quota_campers){
+    public void addtoCard(String set_event_name, String set_event_start_date, String set_event_start_time, String set_event_end_time, String set_cod, String set_team_photo, int set_quota_photo, String set_team_campers, int set_quota_campers, String set_event_id){
         planEventList.add(
                 new PlanEventsModel(
-                       set_event_name,
+                        set_event_name,
                         set_event_start_date,
                         set_event_start_time,
                         set_event_end_time,
@@ -159,7 +158,8 @@ public class PlanEventsFragment extends Fragment {
                         set_team_photo,
                         Integer.toString(set_quota_photo),
                         set_team_campers,
-                        Integer.toString(set_quota_campers)));
+                        Integer.toString(set_quota_campers),
+                        set_event_id));
         PlanEventsAdapter adapter = new PlanEventsAdapter(getContext(), planEventList);
         rv.setAdapter(adapter);
     }
