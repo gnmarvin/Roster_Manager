@@ -40,8 +40,8 @@ public interface APIService {
     Call<JsonElement> TeamList();
 
     @POST("/ccit_backend/event_roster/event_roster_rest/delete")
-    @FormUrlEncoded
-    Call<JsonElement> DeleteEventRoster(@Field("id") String deleted_roster_id);
+    Call<ResponseBody> DeleteEventRoster(@Body DeleteEvents body);
+
 
 //    @POST("/ccit_backend/event_roster/event_roster_rest/add")
 //    @FormUrlEncoded
