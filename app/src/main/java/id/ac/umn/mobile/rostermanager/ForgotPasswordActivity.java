@@ -11,6 +11,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ForgotPasswordActivity extends AppCompatActivity {
 
     @Override
@@ -24,22 +31,29 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         sendRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DisplayToast(emailText.getText().toString());
-                if (emailText.getText().toString() == "") {
-                    DisplayToast("Please fill your email");
-                }
-                else if (emailText.getText().toString() == "admin@admin") {
-                    DisplayToast("Check your email to fix your account");
-                }
-                else {
-                    DisplayToast("Account not found");
-                }
+                String email = emailText.getText().toString();
+                APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
+                Call<JsonElement> recovery = webServiceAPI.Recovery(email);
+                recovery.enqueue(new Callback<JsonElement>() {
+                    @Override
+                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                        JsonElement element = response.body();
+                        JsonObject obj = element.getAsJsonObject();
+                        JsonObject error = obj.get("error").getAsJsonObject();
+                        String error_code = error.get("error_code").getAsString();
+                        if (error_code.equals("SYS01005")) {
+                            String error_message = error.get("error_message").getAsString();
+                            Toast.makeText(ForgotPasswordActivity.this, error_message, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonElement> call, Throwable t) {
+
+                    }
+                });
             }
         });
-    }
-
-    private void DisplayToast(String pesan) {
-        Toast.makeText(getBaseContext(), pesan, Toast.LENGTH_SHORT).show();
     }
 
 }

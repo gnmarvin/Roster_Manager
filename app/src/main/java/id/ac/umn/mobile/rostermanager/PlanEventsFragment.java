@@ -93,7 +93,6 @@ public class PlanEventsFragment extends Fragment {
                 startActivity(addEvent);
             }
         });
-
         return rootView;
     }
     @Override

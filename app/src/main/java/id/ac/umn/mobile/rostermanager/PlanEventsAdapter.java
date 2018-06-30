@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -76,10 +77,13 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
         holder.deleteEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mCtx, planevent.getEvent_id_plant_event(), Toast.LENGTH_SHORT).show();
+                EventRoster eventRoster = new EventRoster();
+                DeleteEvents deleteEvents = new DeleteEvents();
+                eventRoster.withId(planevent.getEvent_id_plant_event());
+                Toast.makeText(mCtx, new Gson().toJson(deleteEvents.withEventRoster(eventRoster)), Toast.LENGTH_SHORT).show();
                 APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-                retrofit2.Call<JsonElement> deleteEventRoster = webServiceAPI.DeleteEventRoster(planevent.getEvent_id_plant_event());
-                
+                retrofit2.Call<JsonElement> deleteEventRoster = webServiceAPI.DeleteEventRoster(deleteEvents.withEventRoster(eventRoster));
+
                 deleteEventRoster.enqueue(new Callback<JsonElement>() {
                     @Override
                     public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
@@ -87,11 +91,12 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
                         JsonObject obj = element.getAsJsonObject();
                         JsonObject error = obj.get("error").getAsJsonObject();
                         String error_code = error.get("error_code").getAsString();
-                        if(error_code.equals(0)){
-                            Toast.makeText(mCtx, planevent.getEvent_id_plant_event()+" ok", Toast.LENGTH_SHORT).show();
+                        if(error_code.equals("0")){
+                            Toast.makeText(mCtx, planevent.getName_event_plan_event()+" deleted", Toast.LENGTH_SHORT).show();
+                            PlanEventsFragment.instantiate(mCtx, "PlanEventsFragment");
                         }
                         else{
-                            Toast.makeText(mCtx, "fail", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mCtx, "fail to delete", Toast.LENGTH_SHORT).show();
                         }
                     }
 

@@ -12,7 +12,11 @@ public class DeleteEvents {
         return eventRoster;
     }
 
-    public void setEventRoster(EventRoster eventRoster) {
-        t
+    public void setEventRoster(EventRoster eventRoster) { this.eventRoster = eventRoster; }
+
+    public DeleteEvents withEventRoster(EventRoster eventRoster) {
+        this.eventRoster = eventRoster;
+        return this;
     }
+
 }
