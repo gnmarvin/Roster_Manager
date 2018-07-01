@@ -31,16 +31,17 @@ public class ViewProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_profile);
+        SharedData sharedData = SharedData.getInstance();
 
         //Get the data from main activity
         Intent i = getIntent();
         Bundle extras = i.getExtras();
-        full_name = extras.getString("USERNAME");
-        email = extras.getString("EMAIL");
-        mobile_no = extras.getString("MOBILE_NO");
-        mobile_whatsapp = extras.getString("MOBILE_WHATSAPP");
-        mobile_line = extras.getString("MOBILE_LINE");
-        contact_id = extras.getString("CONTACT_ID");
+        full_name = sharedData.getName();
+        email = sharedData.getEmail();
+        mobile_no = sharedData.getMobile_no();
+        mobile_whatsapp = sharedData.getMobile_whatsapp();
+        mobile_line = sharedData.getMobile_line();
+        contact_id = sharedData.getContact_id();
 
         // QR code generator ini
         QRCodeWriter writer = new QRCodeWriter();

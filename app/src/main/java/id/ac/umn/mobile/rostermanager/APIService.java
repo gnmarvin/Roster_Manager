@@ -32,7 +32,7 @@ public interface APIService {
     @GET("/ccit_backend/event_roster/event_roster_rest/list")
     Call<JsonElement> EventRoster(@Header("token_id") String token_id);
     @GET("/ccit_backend/event_roster/event_roster_rest/list_job")
-    Call<JsonElement>  JobRoster(@Header("token_id") String token_id, @Query("event_roster_id") String event_roster_id);
+    Call<JsonElement> JobRoster(@Header("token_id") String token_id, @Query("event_roster_id") String event_roster_id);
 
     @GET("/ccit_backend/event/event_rest/list")
     Call<JsonElement> EventList();
@@ -41,6 +41,7 @@ public interface APIService {
 
     @POST("/ccit_backend/event_roster/event_roster_rest/delete")
     Call<JsonElement> DeleteEventRoster(@Body DeleteEvents body);
+
 
 
 //    @POST("/ccit_backend/event_roster/event_roster_rest/add")
