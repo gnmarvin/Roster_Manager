@@ -50,9 +50,6 @@ public class PlanCrewsFragment extends Fragment {
 
         SharedData sharedData = SharedData.getInstance();
         token_id = sharedData.getToken_id();
-        //tm_name = sharedData.getName();
-        //code_team = sharedData.getCode_team();
-        //Toast.makeText(getContext(), tm_name+" "+code_team, Toast.LENGTH_SHORT).show();
         planCrewsList = new ArrayList<>();
 
 
@@ -75,6 +72,7 @@ public class PlanCrewsFragment extends Fragment {
                     setter(set_event_id, set_event_name, set_event_start_date, set_event_start_time, set_event_end_time, set_cod, size);
                 }
                 if(planCrewsList.size() == 0){
+                    // jika tidak list event untuk team yang bersangkutan, tidak akan ditampilkan, hanya menampilkan toast
                     Toast.makeText(getContext(), "Your team was not rostered", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -113,6 +111,8 @@ public class PlanCrewsFragment extends Fragment {
                 }
                 if(team[size]!=null){
                     if(team[size].equals(sharedData.getName_team())){
+                        //membandingkan data nama team pada shared data login / user (TM) dengan nama team yang bertugas dalam setiap event
+                        //jika sama, maka akan dibuatkan card baru
                         addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team[size], quota[size]);
                     }
                 }
@@ -124,7 +124,6 @@ public class PlanCrewsFragment extends Fragment {
     }
 
     public void addtoCard(String set_event_name, String set_event_start_date, String set_event_start_time, String set_event_end_time, String set_cod, String set_team, int set_quota){
-        //input data, gunakan loop untuk mengambil data dari database
         planCrewsList.add(
                 new PlanCrewsModel(
                         set_event_name,

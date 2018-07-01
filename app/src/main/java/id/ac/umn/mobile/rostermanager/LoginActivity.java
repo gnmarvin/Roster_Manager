@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     Boolean checkisTrue;
 
     protected void setFilterTeam(){
+        //fungsi untuk menambahkan filter TEAM apa yang bertugas, khususnya untuk TEAM MANAGER
         final SharedData sharedData = SharedData.getInstance();
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
         retrofit2.Call<JsonElement> listTeam = webServiceAPI.TeamList(sharedData.getToken_id());
