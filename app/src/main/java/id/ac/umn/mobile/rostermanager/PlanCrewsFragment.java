@@ -17,23 +17,22 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PlanCrewsFragment extends Fragment {
     List<PlanCrewsModel> planCrewsList;
     RecyclerView rv;
-    String set_event_name, set_event_id, set_cod, set_event_end_time, set_event_start_time, set_event_start_date, token_id;
+    String set_event_name, set_event_id, set_cod, set_event_end_time, set_event_start_time, set_event_start_date, token_id, tm_name, code_team;
     String[] event_id = new String[20];
     String[] event_name = new String[20];
     String[] event_start_date = new String[20];
     String[] event_start_time = new String[20];
     String[] event_end_time = new String[20];
     String[] cod = new String[20];
-    String[] team_photo = new String[20];
-    String[] team_campers = new String[20];
-    int[] quota_photo = new int[20];
-    int[] quota_campers = new int[20];
+    String[] team = new String[20];
+    int[] quota = new int[20];
     int index = 0;
     int size; // deklarasi variable untuk menyimpan banyaknya data event yang ada
 
@@ -51,10 +50,14 @@ public class PlanCrewsFragment extends Fragment {
 
         SharedData sharedData = SharedData.getInstance();
         token_id = sharedData.getToken_id();
+        tm_name = sharedData.getName();
+        code_team = sharedData.getCode_team();
+        Toast.makeText(getContext(), tm_name+" "+code_team, Toast.LENGTH_SHORT).show();
         planCrewsList = new ArrayList<>();
 
+
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-        retrofit2.Call<JsonElement> listEvent = webServiceAPI.EventList(token_id);
+        retrofit2.Call<JsonElement> listEvent = webServiceAPI.EventRoster(token_id);
         listEvent.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(retrofit2.Call<JsonElement> call, Response<JsonElement> response) {
@@ -80,7 +83,8 @@ public class PlanCrewsFragment extends Fragment {
     }
 
     public void setter(String set_event_id, String set_event_name, String set_event_start_date, String set_event_start_time, String set_event_end_time, String set_cod, final Integer size){
-        Toast.makeText(getContext(), size.toString(), Toast.LENGTH_SHORT).show();
+        final SharedData sharedData = SharedData.getInstance();
+        final String code_team;
         event_name[size] = set_event_name;
         event_id[size] = set_event_id;
         event_start_date[size] = set_event_start_date;
@@ -88,7 +92,7 @@ public class PlanCrewsFragment extends Fragment {
         event_end_time[size] = set_event_end_time;
         cod[size] = set_cod;
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-        retrofit2.Call<JsonElement> listJob = webServiceAPI.TeamList(token_id);
+        retrofit2.Call<JsonElement> listJob = webServiceAPI.JobRoster(token_id, event_id[size]);
         listJob.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(retrofit2.Call<JsonElement> call, Response<JsonElement> response) {
@@ -97,18 +101,20 @@ public class PlanCrewsFragment extends Fragment {
                 JsonArray data = obj.get("event_roster_job").getAsJsonArray();
                 for (int j = 0; j < data.size(); j++) {
                     JsonObject singleData = data.get(j).getAsJsonObject();
-                    if(singleData.get("organization_code").getAsString().contains("PHOTO"))
+                    Toast.makeText(getContext(), singleData.get("organization_code").getAsString(), Toast.LENGTH_SHORT).show();
+                    if(singleData.get("organization_code").getAsString().equals(sharedData.getCode_team()))
                     {
-                        team_photo[size] = singleData.get("organization_name").getAsString();
-                        quota_photo[size] += singleData.get("roster_job_quota").getAsInt();
-                    }
-                    else if(singleData.get("organization_code").getAsString().contains("CAMP"))
-                    {
-                        team_campers[size] = singleData.get("organization_name").getAsString();
-                        quota_campers[size] += singleData.get("roster_job_quota").getAsInt();
+                        team[size] = singleData.get("organization_name").getAsString();
+                        quota[size] += singleData.get("roster_job_quota").getAsInt();
                     }
                 }
-                addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team_photo[size], quota_photo[size], team_campers[size], quota_campers[size]);
+                if(team[size]!=null){
+                    if(team[size].equals(sharedData.getName_team())){
+                        Toast.makeText(getContext(), team[size]+" "+sharedData.getName_team(), Toast.LENGTH_SHORT).show();
+                        addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team[size], quota[size]);
+                    }
+//                addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team[size], quota[size]);
+                }
             }
             @Override
             public void onFailure(retrofit2.Call<JsonElement> call, Throwable t) {
@@ -116,7 +122,7 @@ public class PlanCrewsFragment extends Fragment {
         });
     }
 
-    public void addtoCard(String set_event_name, String set_event_start_date, String set_event_start_time, String set_event_end_time, String set_cod, String set_team_photo, int set_quota_photo, String set_team_campers, int set_quota_campers){
+    public void addtoCard(String set_event_name, String set_event_start_date, String set_event_start_time, String set_event_end_time, String set_cod, String set_team, int set_quota){
         //input data, gunakan loop untuk mengambil data dari database
         planCrewsList.add(
                 new PlanCrewsModel(
@@ -125,9 +131,8 @@ public class PlanCrewsFragment extends Fragment {
                         set_event_start_time,
                         set_event_end_time,
                         set_cod,
-                        set_team_photo,
-                        String.valueOf(set_quota_photo)));
-
+                        set_team,
+                        String.valueOf(set_quota)));
         PlanCrewsAdapter adapter = new PlanCrewsAdapter(getContext(), planCrewsList);
         rv.setAdapter(adapter);
     }

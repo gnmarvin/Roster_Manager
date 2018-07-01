@@ -25,7 +25,24 @@ public class SharedData {
     private String mobile_whatsapp;
     private String mobile_line;
     private String contact_id;
+    private String code_team;
+    private String name_team;
 
+    public String getName_team() {
+        return name_team;
+    }
+
+    public void setName_team(String name_team) {
+        this.name_team = name_team;
+    }
+
+    public String getCode_team() {
+        return code_team;
+    }
+
+    public void setCode_team(String code_team) {
+        this.code_team = code_team;
+    }
 
     public String getEmail() {
         return email;
