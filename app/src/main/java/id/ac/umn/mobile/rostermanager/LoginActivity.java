@@ -35,9 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         final SharedData sharedData = SharedData.getInstance();
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
         retrofit2.Call<JsonElement> listTeam = webServiceAPI.TeamList(sharedData.getToken_id());
-        Toast.makeText(LoginActivity.this, sharedData.getRole(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(LoginActivity.this, sharedData.getRole(), Toast.LENGTH_SHORT).show();
         if(sharedData.getRole().equals("TM")){
-            Toast.makeText(LoginActivity.this, sharedData.getRole(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(LoginActivity.this, sharedData.getRole(), Toast.LENGTH_SHORT).show();
             listTeam.enqueue(new Callback<JsonElement>() {
                 @Override
                 public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                             if(teamData.get("manager_full_name").getAsString().equals(sharedData.getName())){
                                 sharedData.setCode_team(teamData.get("organization_code").getAsString());
                                 sharedData.setName_team(teamData.get("organization_name").getAsString());
-                                Toast.makeText(LoginActivity.this, sharedData.getRole() +" "+ sharedData.getCode_team()+" "+sharedData.getName_team(), Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(LoginActivity.this, sharedData.getRole() +" "+ sharedData.getCode_team()+" "+sharedData.getName_team(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     }

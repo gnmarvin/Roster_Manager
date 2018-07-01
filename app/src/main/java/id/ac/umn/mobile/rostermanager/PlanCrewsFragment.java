@@ -110,10 +110,12 @@ public class PlanCrewsFragment extends Fragment {
                 }
                 if(team[size]!=null){
                     if(team[size].equals(sharedData.getName_team())){
-                        Toast.makeText(getContext(), team[size]+" "+sharedData.getName_team(), Toast.LENGTH_SHORT).show();
                         addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team[size], quota[size]);
                     }
 //                addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team[size], quota[size]);
+                }
+                else{
+                    Toast.makeText(getContext(), "Your team was not rostered", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
