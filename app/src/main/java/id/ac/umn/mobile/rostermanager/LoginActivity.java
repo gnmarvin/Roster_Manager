@@ -96,12 +96,12 @@ public class LoginActivity extends AppCompatActivity {
                             String token_id = token.get("token_id").getAsString();
                             Intent i = new Intent(LoginActivity.this, MainActivity.class);
                             Bundle extras = new Bundle();
-                            extras.putString("USERNAME", full_name);
-                            extras.putString("EMAIL", email);
-                            extras.putString("MOBILE_NO", mobile_no);
-                            extras.putString("MOBILE_WHATSAPP", mobile_whatsapp);
-                            extras.putString("MOBILE_LINE", mobile_line);
-                            extras.putString("CONTACT_ID", contact_id);
+                            sharedData.setName(full_name);
+                            sharedData.setName(email);
+                            sharedData.setName(mobile_no);
+                            sharedData.setName(mobile_whatsapp);
+                            sharedData.setName(mobile_line);
+                            sharedData.setName(contact_id);
                             sharedData.setRole(role);
                             sharedData.setToken_id(token_id);
                             i.putExtras(extras);

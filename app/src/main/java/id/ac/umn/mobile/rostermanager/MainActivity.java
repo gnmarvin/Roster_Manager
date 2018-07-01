@@ -45,12 +45,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //navigations
         Intent i = getIntent();
         Bundle extras = i.getExtras();
-        full_name = extras.getString("USERNAME");
-        email = extras.getString("EMAIL");
-        mobile_no = extras.getString("MOBILE_NO");
-        mobile_whatsapp = extras.getString("MOBILE_WHATSAPP");
-        mobile_line = extras.getString("MOBILE_LINE");
-        contact_id = extras.getString("CONTACT_ID");
+        full_name = sharedData.getName();
+        email = sharedData.getEmail();
+        mobile_no = sharedData.getMobile_no();
+        mobile_whatsapp = sharedData.getMobile_whatsapp();
+        mobile_line = sharedData.getMobile_line();
+        contact_id = sharedData.getContact_id();
         role = sharedData.getRole();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
