@@ -8,6 +8,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -29,9 +30,9 @@ public interface APIService {
     REST UNTUK MENGAMBIL DATA LIST EVENT dan LIST TEAM / JOB  yang bertugas di event tersebut
      */
     @GET("/ccit_backend/event_roster/event_roster_rest/list")
-    Call<JsonElement> EventRoster();
+    Call<JsonElement> EventRoster(@Header("token_id") String token_id);
     @GET("/ccit_backend/event_roster/event_roster_rest/list_job")
-    Call<JsonElement>  JobRoster(@Query("event_roster_id") String event_roster_id);
+    Call<JsonElement>  JobRoster(@Header("token_id") String token_id, @Query("event_roster_id") String event_roster_id);
 
     @GET("/ccit_backend/event/event_rest/list")
     Call<JsonElement> EventList();

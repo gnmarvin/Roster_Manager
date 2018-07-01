@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        final SharedData sharedData = SharedData.getInstance();
         loginButton = (Button) findViewById(R.id.login);
         forgotText = (TextView) findViewById(R.id.forgot);
         usernameEdit = (EditText) findViewById(R.id.username_edit);
@@ -84,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             JsonObject profile = obj.get("profile").getAsJsonObject();
                             JsonObject roles = obj.get("role").getAsJsonObject();
+                            JsonObject token = obj.get("token").getAsJsonObject();
                             String full_name = profile.get("full_name").getAsString();
                             String email = profile.get("email").getAsString();
                             String mobile_no = profile.get("mobile_no").getAsString();
@@ -91,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                             String mobile_line = profile.get("mobile_line").getAsString();
                             String contact_id = profile.get("contact_id").getAsString();
                             String role = roles.get("role").getAsString();
+                            String token_id = token.get("token_id").getAsString();
                             Intent i = new Intent(LoginActivity.this, MainActivity.class);
                             Bundle extras = new Bundle();
                             extras.putString("USERNAME", full_name);
@@ -99,7 +102,8 @@ public class LoginActivity extends AppCompatActivity {
                             extras.putString("MOBILE_WHATSAPP", mobile_whatsapp);
                             extras.putString("MOBILE_LINE", mobile_line);
                             extras.putString("CONTACT_ID", contact_id);
-                            extras.putString("ROLE", role);
+                            sharedData.setRole(role);
+                            sharedData.setToken_id(token_id);
                             i.putExtras(extras);
                             startActivity(i);
                         }

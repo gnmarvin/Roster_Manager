@@ -31,6 +31,8 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
     private Context mCtx;
     private List<PlanEventsModel> planEventsModelList;
 
+
+
     public PlanEventsAdapter(Context mCtx, List<PlanEventsModel> planEventsModelList) {
         this.mCtx = mCtx;
         this.planEventsModelList = planEventsModelList;
@@ -47,7 +49,7 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
     }
 
     @Override
-    public void onBindViewHolder(PlanEventsViewHolder holder, int position) {
+    public void onBindViewHolder(PlanEventsViewHolder holder, final int position) {
         final PlanEventsModel planevent = planEventsModelList.get(position);
         holder.textViewPlanEventNameEvent.setText(planevent.getName_event_plan_event());
         holder.textViewPlanEventDate.setText(planevent.getDate_plan_event());
@@ -93,7 +95,8 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
                         String error_code = error.get("error_code").getAsString();
                         if(error_code.equals("0")){
                             Toast.makeText(mCtx, planevent.getName_event_plan_event()+" deleted", Toast.LENGTH_SHORT).show();
-                            PlanEventsFragment.instantiate(mCtx, "PlanEventsFragment");
+                            planEventsModelList.remove(position);
+                            notifyDataSetChanged();
                         }
                         else{
                             Toast.makeText(mCtx, "fail to delete", Toast.LENGTH_SHORT).show();

@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     String full_name = "";               //variable buat nampung username inputan user
@@ -24,12 +25,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     String mobile_line = "";
     String contact_id = "";
     String role = "";
-    TextView header_username;           //variable buat text dibawah header picture
+    String token_id = "";
+    TextView header_username, header_email;           //variable buat text dibawah header picture
     ImageView profilePicture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedData sharedData = SharedData.getInstance();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -48,7 +51,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mobile_whatsapp = extras.getString("MOBILE_WHATSAPP");
         mobile_line = extras.getString("MOBILE_LINE");
         contact_id = extras.getString("CONTACT_ID");
-        role = extras.getString("ROLE");
+        role = sharedData.getRole();
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -56,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View header = navigationView.getHeaderView(0);
         header_username = (TextView)header.findViewById(R.id.header_username);
         header_username.setText(full_name);
+        header_email = (TextView)header.findViewById(R.id.header_email);
+        header_email.setText(email);
         displaySelectedScreen(R.id.nav_my_schedules);
 
         //click profile picture
