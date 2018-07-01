@@ -5,7 +5,7 @@ import android.app.Application;
 /**
  * Created by Marvin on 7/1/2018.
  */
-
+//
 public class SharedData {
     private static SharedData instance = new SharedData();
 
