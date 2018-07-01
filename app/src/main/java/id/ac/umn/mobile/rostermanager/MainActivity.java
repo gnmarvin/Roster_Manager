@@ -131,10 +131,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new BlockoutDatesFragment();
                 break;
             case R.id.nav_plan_events:
-                fragment = new PlanEventsFragment();
+                if(!role.equals("OPS")){
+                    Toast.makeText(this, "You're not allowed to access this menu", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    fragment = new PlanEventsFragment();
+                }
                 break;
             case R.id.nav_plan_crews:
-                fragment = new PlanCrewsFragment();
+                if(!role.equals("TM")){
+                    Toast.makeText(this, "You're not allowed to access this menu", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    fragment = new PlanCrewsFragment();
+                }
                 break;
             case R.id.nav_cod:
                 fragment = new CodFragment();
