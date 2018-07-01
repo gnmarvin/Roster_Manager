@@ -35,9 +35,9 @@ public interface APIService {
     Call<JsonElement> JobRoster(@Header("token_id") String token_id, @Query("event_roster_id") String event_roster_id);
 
     @GET("/ccit_backend/event/event_rest/list")
-    Call<JsonElement> EventList();
+    Call<JsonElement> EventList(@Header("token_id") String token_id);
     @GET("/ccit_backend/organization/organization_rest/list")
-    Call<JsonElement> TeamList();
+    Call<JsonElement> TeamList(@Header("token_id") String token_id);
 
     @POST("/ccit_backend/event_roster/event_roster_rest/delete")
     Call<JsonElement> DeleteEventRoster(@Body DeleteEvents body);
