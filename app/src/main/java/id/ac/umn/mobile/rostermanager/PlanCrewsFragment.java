@@ -50,9 +50,9 @@ public class PlanCrewsFragment extends Fragment {
 
         SharedData sharedData = SharedData.getInstance();
         token_id = sharedData.getToken_id();
-        tm_name = sharedData.getName();
-        code_team = sharedData.getCode_team();
-        Toast.makeText(getContext(), tm_name+" "+code_team, Toast.LENGTH_SHORT).show();
+        //tm_name = sharedData.getName();
+        //code_team = sharedData.getCode_team();
+        //Toast.makeText(getContext(), tm_name+" "+code_team, Toast.LENGTH_SHORT).show();
         planCrewsList = new ArrayList<>();
 
 
@@ -73,6 +73,9 @@ public class PlanCrewsFragment extends Fragment {
                     set_cod = singleData.get("cod_full_name").getAsString();
                     set_event_id = singleData.get("id").getAsString();
                     setter(set_event_id, set_event_name, set_event_start_date, set_event_start_time, set_event_end_time, set_cod, size);
+                }
+                if(planCrewsList.size() == 0){
+                    Toast.makeText(getContext(), "Your team was not rostered", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
@@ -101,7 +104,7 @@ public class PlanCrewsFragment extends Fragment {
                 JsonArray data = obj.get("event_roster_job").getAsJsonArray();
                 for (int j = 0; j < data.size(); j++) {
                     JsonObject singleData = data.get(j).getAsJsonObject();
-                    Toast.makeText(getContext(), singleData.get("organization_code").getAsString(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), singleData.get("organization_code").getAsString(), Toast.LENGTH_SHORT).show();
                     if(singleData.get("organization_code").getAsString().equals(sharedData.getCode_team()))
                     {
                         team[size] = singleData.get("organization_name").getAsString();
@@ -112,10 +115,6 @@ public class PlanCrewsFragment extends Fragment {
                     if(team[size].equals(sharedData.getName_team())){
                         addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team[size], quota[size]);
                     }
-//                addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team[size], quota[size]);
-                }
-                else{
-                    Toast.makeText(getContext(), "Your team was not rostered", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
