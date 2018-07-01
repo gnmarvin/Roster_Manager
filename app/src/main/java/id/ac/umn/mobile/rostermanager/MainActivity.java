@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        //navigation
+        //navigations
         Intent i = getIntent();
         Bundle extras = i.getExtras();
         full_name = extras.getString("USERNAME");
