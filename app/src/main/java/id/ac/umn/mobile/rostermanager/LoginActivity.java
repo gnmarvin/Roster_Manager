@@ -95,7 +95,6 @@ public class LoginActivity extends AppCompatActivity {
                             String role = roles.get("role").getAsString();
                             String token_id = token.get("token_id").getAsString();
                             Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                            Bundle extras = new Bundle();
                             sharedData.setName(full_name);
                             sharedData.setEmail(email);
                             sharedData.setMobile_no(mobile_no);
@@ -104,7 +103,6 @@ public class LoginActivity extends AppCompatActivity {
                             sharedData.setContact_id(contact_id);
                             sharedData.setRole(role);
                             sharedData.setToken_id(token_id);
-                            i.putExtras(extras);
                             startActivity(i);
                         }
                     }

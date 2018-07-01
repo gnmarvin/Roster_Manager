@@ -33,9 +33,6 @@ public class ViewProfile extends AppCompatActivity {
         setContentView(R.layout.view_profile);
         SharedData sharedData = SharedData.getInstance();
 
-        //Get the data from main activity
-        Intent i = getIntent();
-        Bundle extras = i.getExtras();
         full_name = sharedData.getName();
         email = sharedData.getEmail();
         mobile_no = sharedData.getMobile_no();

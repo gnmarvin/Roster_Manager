@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     String mobile_line = "";
     String contact_id = "";
     String role = "";
-    String token_id = "";
     TextView header_username, header_email;           //variable buat text dibawah header picture
     ImageView profilePicture;
     @Override
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         SharedData sharedData = SharedData.getInstance();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);//
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -43,8 +42,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         //navigations
-        Intent i = getIntent();
-        Bundle extras = i.getExtras();
         full_name = sharedData.getName();
         email = sharedData.getEmail();
         mobile_no = sharedData.getMobile_no();
@@ -70,14 +67,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, ViewProfile.class);
-                Bundle extras = new Bundle();
-                extras.putString("USERNAME", full_name);
-                extras.putString("EMAIL", email);
-                extras.putString("MOBILE_NO", mobile_no);
-                extras.putString("MOBILE_WHATSAPP", mobile_whatsapp);
-                extras.putString("MOBILE_LINE", mobile_line);
-                extras.putString("CONTACT_ID", contact_id);
-                i.putExtras(extras);
                 startActivity(i);
             }
         });
