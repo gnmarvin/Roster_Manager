@@ -38,7 +38,7 @@ public interface APIService {
     Call<JsonElement> EventList(@Header("token_id") String token_id);
     @GET("/ccit_backend/organization/organization_rest/list")
     Call<JsonElement> TeamList(@Header("token_id") String token_id);
-
+    /////////
     @POST("/ccit_backend/event_roster/event_roster_rest/delete")
     Call<JsonElement> DeleteEventRoster(@Body DeleteEvents body);
 
