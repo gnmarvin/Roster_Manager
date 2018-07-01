@@ -23,7 +23,7 @@ import retrofit2.Response;
 public class PlanCrewsFragment extends Fragment {
     List<PlanCrewsModel> planCrewsList;
     RecyclerView rv;
-    String set_event_name, set_event_id, set_cod, set_event_end_time, set_event_start_time, set_event_start_date;
+    String set_event_name, set_event_id, set_cod, set_event_end_time, set_event_start_time, set_event_start_date, token_id;
     String[] event_id = new String[20];
     String[] event_name = new String[20];
     String[] event_start_date = new String[20];
@@ -49,10 +49,12 @@ public class PlanCrewsFragment extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
 
+        SharedData sharedData = SharedData.getInstance();
+        token_id = sharedData.getToken_id();
         planCrewsList = new ArrayList<>();
 
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-        retrofit2.Call<JsonElement> listEvent = webServiceAPI.EventList();
+        retrofit2.Call<JsonElement> listEvent = webServiceAPI.EventList(token_id);
         listEvent.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(retrofit2.Call<JsonElement> call, Response<JsonElement> response) {
@@ -86,7 +88,7 @@ public class PlanCrewsFragment extends Fragment {
         event_end_time[size] = set_event_end_time;
         cod[size] = set_cod;
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-        retrofit2.Call<JsonElement> listJob = webServiceAPI.TeamList();
+        retrofit2.Call<JsonElement> listJob = webServiceAPI.TeamList(token_id);
         listJob.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(retrofit2.Call<JsonElement> call, Response<JsonElement> response) {
@@ -100,7 +102,7 @@ public class PlanCrewsFragment extends Fragment {
                         team_photo[size] = singleData.get("organization_name").getAsString();
                         quota_photo[size] += singleData.get("roster_job_quota").getAsInt();
                     }
-                    else if(singleData.get("organization_code").getAsString().contains("CAMPERS"))
+                    else if(singleData.get("organization_code").getAsString().contains("CAMP"))
                     {
                         team_campers[size] = singleData.get("organization_name").getAsString();
                         quota_campers[size] += singleData.get("roster_job_quota").getAsInt();

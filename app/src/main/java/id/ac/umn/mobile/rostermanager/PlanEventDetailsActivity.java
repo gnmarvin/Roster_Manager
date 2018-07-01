@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class PlanEventDetailsActivity extends AppCompatActivity {
     int size;
-    String event_name, event_start_date, event_start_time, event_end_time, event_cod;
+    String event_name, event_start_date, event_start_time, event_end_time, event_cod, token_id;
     String[] team_campers = new String[20];
     String[] team_photo = new String[20];
     String[] id_team_campers = new String[20];
@@ -49,6 +49,8 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_event_details);
+        SharedData sharedData = SharedData.getInstance();
+        token_id = sharedData.getToken_id();
 
         autolistevent = findViewById(R.id.edit_name_event_plan_event);
         dropdownlistevent = findViewById(R.id.drop_down_name_event_plan_event);
@@ -129,7 +131,7 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
 
     public void callRestList(){
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-        retrofit2.Call<JsonElement> listEvent = webServiceAPI.EventList();
+        retrofit2.Call<JsonElement> listEvent = webServiceAPI.EventList(token_id);
         listEvent.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
@@ -150,7 +152,7 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
             }
         });
 
-        retrofit2.Call<JsonElement> listTeam = webServiceAPI.TeamList();
+        retrofit2.Call<JsonElement> listTeam = webServiceAPI.TeamList(token_id);
         listTeam.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(@NonNull Call<JsonElement> call, @NonNull Response<JsonElement> response) {
@@ -161,7 +163,7 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
                     JsonObject singleData = data.get(size).getAsJsonObject();
                     if (!singleData.get("organization_parent_code").isJsonNull()) {
                         if(singleData.get("organization_parent_code").getAsString().equals("CCCPOPS")){
-                            if(singleData.get("organization_code").getAsString().contains("CAMPERS")){
+                            if(singleData.get("organization_code").getAsString().contains("CAMP")){
                                 team_campers[counter_campers] = singleData.get("organization_name").getAsString();
                                 id_team_campers[counter_campers] = singleData.get("id").getAsString();
                                 counter_campers++;
