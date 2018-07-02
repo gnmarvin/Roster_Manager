@@ -22,6 +22,9 @@ public interface APIService {
     Call<JsonElement> Login(@Field("username") String username,
                                 @Field("password") String password);
 
+    @POST("/ccit_backend/auth/auth_rest/logout")
+    Call<JsonElement> Logout(@Header("token_id") String token_id);
+
     @POST("/ccit_backend/auth/auth_rest/recovery")
     @FormUrlEncoded
     Call<JsonElement> Recovery(@Field("email") String email);

@@ -17,6 +17,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     String full_name = "";               //variable buat nampung username inputan user
     String email = "";
@@ -25,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     String mobile_line = "";
     String contact_id = "";
     String role = "";
+    String token_id;
     TextView header_username, header_email;           //variable buat text dibawah header picture
     ImageView profilePicture;
     @Override
@@ -49,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mobile_line = sharedData.getMobile_line();
         contact_id = sharedData.getContact_id();
         role = sharedData.getRole();
+        token_id = sharedData.getToken_id();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -78,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            moveTaskToBack(true);
         }
     }
 
@@ -153,7 +162,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new SettingFragment();
                 break;
             case R.id.nav_logout:
-//                fragment = new SettingFragment();
+                APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
+                retrofit2.Call<JsonElement> logout = webServiceAPI.Logout(token_id);
+                logout.enqueue(new Callback<JsonElement>() {
+                    @Override
+                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                        JsonElement element = response.body();
+                        JsonObject obj = element.getAsJsonObject();
+                        JsonObject error = obj.get("error").getAsJsonObject();
+                        String error_code = error.get("error_code").getAsString();
+                        if (error_code.equals("0")) {
+                            SharedData sharedData = SharedData.getInstance();
+                            sharedData.resetData();
+                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonElement> call, Throwable t) {
+
+                    }
+                });
                 break;
        }
 

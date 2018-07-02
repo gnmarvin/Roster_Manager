@@ -93,4 +93,14 @@ public class SharedData {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void resetData(){
+        token_id = "";
+        role = "";
+        name = "";
+        email = "";
+        mobile_no = "";
+        mobile_whatsapp = "";
+        mobile_line = "";
+        contact_id = "";}
 }
