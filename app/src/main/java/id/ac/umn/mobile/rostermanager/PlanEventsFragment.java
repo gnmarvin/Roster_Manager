@@ -133,7 +133,7 @@ public class PlanEventsFragment extends Fragment {
                             team_photo[size] = singleData.get("organization_name").getAsString();
                             quota_photo[size] += singleData.get("roster_job_quota").getAsInt();
                         }
-                        else if(singleData.get("organization_code").getAsString().contains("CAMPERS"))
+                        else if(singleData.get("organization_code").getAsString().contains("CAMP"))
                         {
                             team_campers[size] = singleData.get("organization_name").getAsString();
                             quota_campers[size] += singleData.get("roster_job_quota").getAsInt();

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.CheckBox;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
@@ -29,6 +30,39 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences loginPreferences;
     SharedPreferences.Editor loginPrefEditor;
     Boolean checkisTrue;
+
+    protected void setFilterTeam(){
+        //fungsi untuk menambahkan filter TEAM apa yang bertugas, khususnya untuk TEAM MANAGER
+        final SharedData sharedData = SharedData.getInstance();
+        APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
+        retrofit2.Call<JsonElement> listTeam = webServiceAPI.TeamList(sharedData.getToken_id());
+        //Toast.makeText(LoginActivity.this, sharedData.getRole(), Toast.LENGTH_SHORT).show();
+        if(sharedData.getRole().equals("TM")){
+            //Toast.makeText(LoginActivity.this, sharedData.getRole(), Toast.LENGTH_SHORT).show();
+            listTeam.enqueue(new Callback<JsonElement>() {
+                @Override
+                public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                    JsonElement element = response.body();
+                    JsonObject obj = element.getAsJsonObject();
+                    JsonArray organization = obj.get("organization").getAsJsonArray();
+                    for(int i= 0; i < organization.size(); i++){
+                        JsonObject teamData = organization.get(i).getAsJsonObject();
+                        if(!teamData.get("manager_full_name").isJsonNull()){
+                            if(teamData.get("manager_full_name").getAsString().equals(sharedData.getName())){
+                                sharedData.setCode_team(teamData.get("organization_code").getAsString());
+                                sharedData.setName_team(teamData.get("organization_name").getAsString());
+                                //Toast.makeText(LoginActivity.this, sharedData.getRole() +" "+ sharedData.getCode_team()+" "+sharedData.getName_team(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                }
+                @Override
+                public void onFailure(Call<JsonElement> call, Throwable t) {
+
+                }
+            });
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                             sharedData.setContact_id(contact_id);
                             sharedData.setRole(role);
                             sharedData.setToken_id(token_id);
+                            setFilterTeam();
                             startActivity(i);
                         }
                     }
@@ -111,7 +146,6 @@ public class LoginActivity extends AppCompatActivity {
                     public void onFailure(Call<JsonElement> call, Throwable t) {
                     }
                 });
-
             }
         });
     }

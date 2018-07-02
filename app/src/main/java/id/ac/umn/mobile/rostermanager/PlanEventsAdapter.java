@@ -27,7 +27,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.PlanEventsViewHolder>{
-
+    SharedData sharedData = SharedData.getInstance();
     private Context mCtx;
     private List<PlanEventsModel> planEventsModelList;
 
@@ -71,6 +71,8 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
                 extras.putString("EVENT_START_TIME", planevent.getTime_start_plan_event());
                 extras.putString("EVENT_END_TIME", planevent.getTime_end_plan_event());
                 extras.putString("EVENT_COD", planevent.getCod_plan_event());
+                extras.putString("EVENT_TEAM_PHOTO", planevent.getPhoto_team_plan_event());
+                extras.putString("EVENT_TEAM_CAMPERS", planevent.getCampers_team_plan_event());
                 gotodetailplanevent.putExtras(extras);
                 mCtx.startActivity(gotodetailplanevent);
             }
@@ -84,7 +86,7 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
                 eventRoster.withId(planevent.getEvent_id_plant_event());
                 Toast.makeText(mCtx, new Gson().toJson(deleteEvents.withEventRoster(eventRoster)), Toast.LENGTH_SHORT).show();
                 APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-                retrofit2.Call<JsonElement> deleteEventRoster = webServiceAPI.DeleteEventRoster(deleteEvents.withEventRoster(eventRoster));
+                retrofit2.Call<JsonElement> deleteEventRoster = webServiceAPI.DeleteEventRoster(sharedData.getToken_id(), deleteEvents.withEventRoster(eventRoster));
 
                 deleteEventRoster.enqueue(new Callback<JsonElement>() {
                     @Override
