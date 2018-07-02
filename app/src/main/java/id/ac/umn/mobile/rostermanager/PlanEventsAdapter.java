@@ -1,7 +1,9 @@
 package id.ac.umn.mobile.rostermanager;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -81,35 +83,56 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
         holder.deleteEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventRoster eventRoster = new EventRoster();
-                DeleteEvents deleteEvents = new DeleteEvents();
-                eventRoster.withId(planevent.getEvent_id_plant_event());
-                Toast.makeText(mCtx, new Gson().toJson(deleteEvents.withEventRoster(eventRoster)), Toast.LENGTH_SHORT).show();
-                APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-                retrofit2.Call<JsonElement> deleteEventRoster = webServiceAPI.DeleteEventRoster(sharedData.getToken_id(), deleteEvents.withEventRoster(eventRoster));
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(mCtx);
+                builder1.setMessage("Are you sure you want to delete this event?");
+                builder1.setCancelable(true);
 
-                deleteEventRoster.enqueue(new Callback<JsonElement>() {
-                    @Override
-                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                        JsonElement element = response.body();
-                        JsonObject obj = element.getAsJsonObject();
-                        JsonObject error = obj.get("error").getAsJsonObject();
-                        String error_code = error.get("error_code").getAsString();
-                        if(error_code.equals("0")){
-                            Toast.makeText(mCtx, planevent.getName_event_plan_event()+" deleted", Toast.LENGTH_SHORT).show();
-                            planEventsModelList.remove(position);
-                            notifyDataSetChanged();
-                        }
-                        else{
-                            Toast.makeText(mCtx, "fail to delete", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                builder1.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                EventRoster eventRoster = new EventRoster();
+                                DeleteEvents deleteEvents = new DeleteEvents();
+                                eventRoster.withId(planevent.getEvent_id_plant_event());
+                                Toast.makeText(mCtx, new Gson().toJson(deleteEvents.withEventRoster(eventRoster)), Toast.LENGTH_SHORT).show();
+                                APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
+                                retrofit2.Call<JsonElement> deleteEventRoster = webServiceAPI.DeleteEventRoster(sharedData.getToken_id(), deleteEvents.withEventRoster(eventRoster));
 
-                    @Override
-                    public void onFailure(Call<JsonElement> call, Throwable t) {
+                                deleteEventRoster.enqueue(new Callback<JsonElement>() {
+                                    @Override
+                                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                                        JsonElement element = response.body();
+                                        JsonObject obj = element.getAsJsonObject();
+                                        JsonObject error = obj.get("error").getAsJsonObject();
+                                        String error_code = error.get("error_code").getAsString();
+                                        if(error_code.equals("0")){
+                                            Toast.makeText(mCtx, planevent.getName_event_plan_event()+" deleted", Toast.LENGTH_SHORT).show();
+                                            planEventsModelList.remove(position);
+                                            notifyDataSetChanged();
+                                        }
+                                        else{
+                                            Toast.makeText(mCtx, "fail to delete", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
 
-                    }
-                });
+                                    @Override
+                                    public void onFailure(Call<JsonElement> call, Throwable t) {
+                                    }
+                                });
+                                dialog.cancel();
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
             }
         });
     }
