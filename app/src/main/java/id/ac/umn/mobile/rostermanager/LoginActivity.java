@@ -58,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 @Override
                 public void onFailure(Call<JsonElement> call, Throwable t) {
-
                 }
             });
         }
@@ -96,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                 final String usernameLogin = usernameEdit.getText().toString();
                 String passwordLogin = passwordEdit.getText().toString();
                 APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-                Call<JsonElement> callLogin = webServiceAPI.Login(usernameLogin, passwordLogin);
+                Call<JsonElement> callLogin = webServiceAPI.Login(usernameLogin, passwordLogin, "mobile");
 
                 callLogin.enqueue(new Callback<JsonElement>() {
                     @Override
