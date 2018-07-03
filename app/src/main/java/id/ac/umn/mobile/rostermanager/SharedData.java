@@ -27,6 +27,16 @@ public class SharedData {
     private String name_team;
     private String organization_id;
     private String job_id;
+
+    public String getEvent_id_plan_crew() {
+        return event_id_plan_crew;
+    }
+
+    public void setEvent_id_plan_crew(String event_id_plan_crew) {
+        this.event_id_plan_crew = event_id_plan_crew;
+    }
+
+    private String event_id_plan_crew;
 //    private String job_name;
     private String[] job_code_menu = new String[12];
     private String[] job_id_menu = new String[12];
@@ -57,20 +67,6 @@ public class SharedData {
         this.job_id_menu[i]=job_id;
         this.job_code_menu[i] = code;
     }
-
-//    public String getJob_name(String code) {
-//        for(int i = 0; i < job_name_menu.length ; i++){
-//            if(code.equals(this.job_code_menu[i])){
-//                this.job_name=job_name_menu[i];
-//            }
-//            else this.job_name="";
-//        }
-//        return job_name;
-//    }
-//
-//    public void setJob_name(String job_name, int i) {
-//        this.job_name_menu[i] = job_name;
-//    }
 
     public String getOrganization_id() {
         return organization_id;

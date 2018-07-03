@@ -4,6 +4,7 @@ package id.ac.umn.mobile.rostermanager;
 import com.google.gson.JsonElement;
 
 import retrofit2.Call;
+import retrofit2.CallAdapter;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -65,7 +66,10 @@ public interface APIService {
     Call<JsonElement> CancelCrew(@Header("token_id") String token_id, @Body CancelCrew body);
 
     @POST("/ccit_backend/event_roster/event_roster_rest/add")
-    Call<JsonElement> AddEventRoster(@Header("token_id") String token_id, @Body AddEvents addevent, @Body EventRosterHasJob addjob);
+    Call<JsonElement> AddEventRoster(@Header("token_id") String token_id, @Body AddEvents body);
+
+    @GET("/ccit_backend/event_roster/event_roster_rest/list_crew")
+    Call<JsonElement> CrewRoster(@Header("token_id") String token_id, @Query("evenr_roster_id") String contact_id);
 
 }
 

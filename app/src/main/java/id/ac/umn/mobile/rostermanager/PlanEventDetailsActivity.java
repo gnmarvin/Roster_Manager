@@ -80,15 +80,15 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
         edit_support_quota = findViewById(R.id.edit_support_quota_event_plan_event);
         edit_editor_quota = findViewById(R.id.edit_editor_quota_event_plan_event);
 
-        code_job[0]= "CCCPASTCAMP";
-        code_job[1]= "CCCPCAMP";
+        code_job[0]= "CCCPCAMP";
+        code_job[1]= "CCCPSWITCH";
         code_job[2]= "CCCPDOL";
-        code_job[3]= "CCCPEDITOR";
-        code_job[4]= "CCCPPHOTO";
-        code_job[5]= "CCCPSUPP";
-        code_job[6]= "CCCPSWITCH";
+        code_job[3]= "CCCPASTCAM";
+        code_job[4]= "CCCPVTR";
+        code_job[5]= "CCCPEDITOR";
+        code_job[6]= "CCCPPHOTO";
         code_job[7]= "CCCPVID";
-        code_job[8]= "CCCPVTR";
+        code_job[8]= "CCCPSUPP";
 
         Intent detailEvent = getIntent();
         Bundle extras = detailEvent.getExtras();
@@ -101,6 +101,56 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
             edit_cod_event.setText(extras.getString("EVENT_COD"));
             autolistteamphoto.setText(extras.getString("EVENT_TEAM_PHOTO"));
             autolistteamcampers.setText(extras.getString("EVENT_TEAM_CAMPERS"));
+            edit_photo_quota.setSystemUiVisibility(0);
+            edit_campers_quota.setSystemUiVisibility(0);
+            edit_video_quota.setSystemUiVisibility(0);
+            edit_ast_campers_quota.setSystemUiVisibility(0);
+            edit_dolly_quota.setSystemUiVisibility(0);
+            edit_vtr_quota.setSystemUiVisibility(0);
+            edit_switch_quota.setSystemUiVisibility(0);
+            edit_support_quota.setSystemUiVisibility(0);
+            edit_editor_quota.setSystemUiVisibility(0);
+
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for(int i =0; i < counter_list_event ; i++){
+                        if(autolistevent.getText().toString().equals(event_name_list[i][0])){
+                            add_new_event_id = event_name_list[i][1];
+                        }
+                    }
+                    for(int i =0; i < counter_campers ; i++){
+                        if(autolistteamcampers.getText().toString().equals(team_campers[i][0])){
+                            add_team_campers_id = team_campers[i][1];
+                        }
+                    }
+                    for(int i =0; i < counter_photo ; i++){
+                        if(autolistteamphoto.getText().toString().equals(team_photo[i][0])){
+                            add_team_photo_id = team_photo[i][1];
+                        }
+                    }
+                    for(int i =0; i < counter_cod ; i++){
+                        if(autolistcod.getText().toString().contains(crew_cod[i][0])){
+                            add_cod_id = crew_cod[i][1];
+                        }
+                    }
+                    add_start_date = edit_event_date.getText().toString();
+                    add_start_time = edit_event_time_start.getText().toString();
+                    add_end_time = edit_event_time_end.getText().toString();
+                    Toast.makeText(PlanEventDetailsActivity.this, add_new_event_id, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlanEventDetailsActivity.this, add_organization_id, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlanEventDetailsActivity.this, add_start_date, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlanEventDetailsActivity.this, add_start_time, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlanEventDetailsActivity.this, add_end_time, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlanEventDetailsActivity.this, add_cod_id, Toast.LENGTH_SHORT).show();
+                }
+            });
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         } else if (extras.getString("NEW") != null) {
 //            addNewEvent();
             callRestList();
@@ -127,44 +177,61 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
                             add_cod_id = crew_cod[i][1];
                         }
                     }
+
                     add_organization_id = sharedData.getOrganization_id();
                     add_start_date = edit_event_date.getText().toString();
                     add_start_time = edit_event_time_start.getText().toString();
                     add_end_time = edit_event_time_end.getText().toString();
-                    add_quota[0] = edit_ast_campers_quota.getText().toString();
-                    add_quota[1] = edit_campers_quota.getText().toString();
+                    add_quota[0] = edit_campers_quota.getText().toString();
+                    add_quota[1] = edit_switch_quota.getText().toString();
                     add_quota[2] = edit_dolly_quota.getText().toString();
-                    add_quota[3] = edit_editor_quota.getText().toString();
-                    add_quota[4] = edit_photo_quota.getText().toString();
-                    add_quota[5] = edit_support_quota.getText().toString();
-                    add_quota[6] = edit_switch_quota.getText().toString();
+                    add_quota[3] = edit_ast_campers_quota.getText().toString();
+                    add_quota[4] = edit_vtr_quota.getText().toString();
+                    add_quota[5] = edit_editor_quota.getText().toString();
+                    add_quota[6] = edit_photo_quota.getText().toString();
                     add_quota[7] = edit_video_quota.getText().toString();
-                    add_quota[8] = edit_vtr_quota.getText().toString();
+                    add_quota[8] = edit_support_quota.getText().toString();
                     add_created_by_id = sharedData.getContact_id();
 
                     EventRoster eventRoster = new EventRoster();
                     eventRoster.setOrganizationId(add_organization_id);
+                    eventRoster.setEventId(add_new_event_id);
                     eventRoster.setRosterDate(add_start_date);
                     eventRoster.setRosterStartTime(add_start_time);
                     eventRoster.setRosterEndTime(add_end_time);
                     eventRoster.setCodId(add_cod_id);
                     eventRoster.setCreatedById(add_created_by_id);
 
-                    EventRosterHasJob eventRosterHasJob = new EventRosterHasJob();
+                    AddEvents addEvents = new AddEvents();
+                    addEvents.setEventRoster(eventRoster);
 
+                    List<EventRosterHasJob> eventRosterHasJobvalues = new ArrayList<>();
+                    EventRosterHasJob eventRosterHasJob = new EventRosterHasJob();
                     for (int i = 0 ; i < 9; i++){
-                        Toast.makeText(PlanEventDetailsActivity.this, add_quota[i] + " " + code_job[i] + " " + id_job[i], Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(PlanEventDetailsActivity.this, add_quota[i] + " " + code_job[i] + " " + id_job[i], Toast.LENGTH_SHORT).show();
+                        eventRosterHasJob.setRosterJobId(id_job[i]);
+                        eventRosterHasJob.setRosterJobQuota(add_quota[i]);
+                        if(code_job[i].contains("VID") || code_job[i].contains("PHOTO")){
+//                            Toast.makeText(PlanEventDetailsActivity.this, "masuk", Toast.LENGTH_SHORT).show();
+                            eventRosterHasJob.setOrganizationUnitId(add_team_photo_id);
+                        }
+                        else{
+                            eventRosterHasJob.setOrganizationUnitId(add_team_campers_id);
+                        }
+//                        Toast.makeText(PlanEventDetailsActivity.this, eventRosterHasJob.getRosterJobId() + " " + eventRosterHasJob.getRosterJobQuota() + " " + eventRosterHasJob.getOrganizationUnitId(), Toast.LENGTH_SHORT).show();
+                        addEvents.setEventRosterHasJob(eventRosterHasJobvalues);
                     }
 
+
+//                    Toast.makeText(this, new Gson().toJson(addEvents.getEventRoster() ), Toast.LENGTH_SHORT).show();
+
+//                    Toast.makeText(PlanEventDetailsActivity.this, eventRoster.getEventId(), Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(PlanEventDetailsActivity.this, eventRoster.getOrganizationId(), Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(PlanEventDetailsActivity.this, eventRoster.getRosterDate(), Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(PlanEventDetailsActivity.this, eventRoster.getRosterStartTime(), Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(PlanEventDetailsActivity.this, eventRoster.getRosterEndTime(), Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(PlanEventDetailsActivity.this, eventRoster.getCodId(), Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(PlanEventDetailsActivity.this, eventRoster.getCreatedById(), Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(PlanEventDetailsActivity.this, add_new_event_id, Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(PlanEventDetailsActivity.this, add_team_photo_id, Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(PlanEventDetailsActivity.this, add_team_campers_id, Toast.LENGTH_SHORT).show();
 
 //                    AddEvents addEvents = new AddEvents();
 //                    addEvents.setEventRoster(eventRoster);
@@ -357,12 +424,10 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
                 JsonArray data = obj.get("roster_job").getAsJsonArray();
                 for(size = 0 ; size < data.size(); size++){
                     JsonObject singleData = data.get(size).getAsJsonObject();
-                    for(int i = 0 ; i < data.size() ; i++){
-                        if(singleData.get("roster_job_code").getAsString().equals(code_job[i])){
-                            id_job[counter_job]=singleData.get("id").getAsString();
-                            Toast.makeText(PlanEventDetailsActivity.this, "masuk" + " " + code_job[counter_job] + " " + singleData.get("roster_job_code").getAsString()+ " " + id_job[counter_job], Toast.LENGTH_SHORT).show();
-                            counter_job++;
-                        }
+                    if(singleData.get("roster_job_code").getAsString().equals(code_job[counter_job])){
+                        id_job[counter_job]=singleData.get("id").getAsString();
+//                        Toast.makeText(PlanEventDetailsActivity.this, counter_job + " masuk" + " " + code_job[counter_job] + " " + singleData.get("roster_job_code").getAsString()+ " " + id_job[counter_job], Toast.LENGTH_SHORT).show();
+                        counter_job++;
                     }
                 }
             }
