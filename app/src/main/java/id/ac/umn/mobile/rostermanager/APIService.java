@@ -10,6 +10,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -20,7 +21,8 @@ public interface APIService {
     @POST("/ccit_backend/auth/auth_rest/login")
     @FormUrlEncoded
     Call<JsonElement> Login(@Field("username") String username,
-                                @Field("password") String password);
+                            @Field("password") String password,
+                            @Query("type") String type);
 
     @POST("/ccit_backend/auth/auth_rest/logout")
     Call<JsonElement> Logout(@Header("token_id") String token_id);
@@ -52,19 +54,3 @@ public interface APIService {
 //    @POST("/ccit_backend/event_roster/event_roster_rest/add")
 //    @FormUrlEncoded
 //    Call<JsonElement>;
-
-
-//    @POST("signup.php")
-//    @FormUrlEncoded
-//    Call<JsonElement> SignUpQuiz(@Field("username") String username,
-//                                 @Field("password") String password,
-//                                 @Field("name") String name);
-//
-//    @POST("chat.php")
-//    @FormUrlEncoded
-//    Call<JsonElement> SendMessage(@Field("name") String name,
-//                                  @Field("message") String message);
-//
-//    @GET("chat.php")
-//    Call<JsonElement> GetAllMessage();
-}
