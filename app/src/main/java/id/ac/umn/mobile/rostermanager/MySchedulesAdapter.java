@@ -5,6 +5,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.AlertDialogLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,7 +41,7 @@ public class MySchedulesAdapter extends RecyclerView.Adapter<MySchedulesAdapter.
     }
 
     @Override
-    public void onBindViewHolder(final MySchedulesViewHolder holder, int position) {
+    public void onBindViewHolder(final MySchedulesViewHolder holder, final int position) {
         final MySchedulesModel myschedules = mySchedulesModelList.get(position);
         holder.textViewEventName.setText(myschedules.getName_event_my_schedule());
         holder.textViewDate.setText(myschedules.getDate_my_schedule());
@@ -59,8 +60,10 @@ public class MySchedulesAdapter extends RecyclerView.Adapter<MySchedulesAdapter.
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.menu_cancel_replace:
-                                Toast.makeText(context, "cancel", Toast.LENGTH_SHORT).show();
                                 Intent gotowritereason = new Intent(context,CancelReplaceActivity.class);
+                                Bundle extras = new Bundle();
+                                extras.putString("POSITION", String.valueOf(position));
+                                gotowritereason.putExtras(extras);
                                 context.startActivity(gotowritereason);
                                 break;
                         }
@@ -73,8 +76,6 @@ public class MySchedulesAdapter extends RecyclerView.Adapter<MySchedulesAdapter.
         holder.linearLayoutMySchedules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //accept dialog, kalo uda accept gabisa accept lagi
-                Toast.makeText(context,myschedules.getName_event_my_schedule(),Toast.LENGTH_LONG).show();
             }
         });
     }
