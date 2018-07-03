@@ -31,6 +31,17 @@ public class SharedData {
     private String[] job_code_menu = new String[12];
     private String[] job_id_menu = new String[12];
 //    private String[] job_name_menu = new String[12];
+    private String[] ref_id = new String[20];
+    private int size = 0;
+
+    public String getRef_id(int position) {
+        return ref_id[position];
+    }
+
+    public void setRef_id(String ref_id) {
+        this.ref_id[size] = ref_id;
+        size++;
+    }
 
     public String getJob_id(String code) {
         for(int i = 0; i < job_id_menu.length ; i++){
