@@ -164,7 +164,7 @@
         <TableRow>
             <TextView
                 android:text="Photographer Quota"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp" />
@@ -173,68 +173,70 @@
                 android:layout_weight="1"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:text="0"/>
         </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Photographer TX Quota"
-                android:layout_weight="1"
-                android:textSize="8pt"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp" />
-            <EditText
-                android:id="@+id/edit_photo_tx_quota_event_plan_event"
-                android:layout_weight="1"
-                android:textSize="8pt"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Photographer PK Quota"
-                android:layout_weight="1"
-                android:textSize="8pt"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp" />
-            <EditText
-                android:id="@+id/edit_photo_pk_quota_event_plan_event"
-                android:layout_weight="1"
-                android:textSize="8pt"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Photographer CC Quota"
-                android:layout_weight="1"
-                android:textSize="8pt"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp" />
-            <EditText
-                android:id="@+id/edit_photo_cc_quota_event_plan_event"
-                android:layout_weight="1"
-                android:textSize="8pt"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Photographer Extra Quota"
-                android:layout_weight="1"
-                android:textSize="8pt"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp" />
-            <EditText
-                android:id="@+id/edit_photo_extra_quota_event_plan_event"
-                android:layout_weight="1"
-                android:textSize="8pt"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
-        </TableRow>
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:text="Photographer TX Quota"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="8pt"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp" />-->
+            <!--<EditText-->
+                <!--android:id="@+id/edit_photo_tx_quota_event_plan_event"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="8pt"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp"/>-->
+        <!--</TableRow>-->
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:text="Photographer PK Quota"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="8pt"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp" />-->
+            <!--<EditText-->
+                <!--android:id="@+id/edit_photo_pk_quota_event_plan_event"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="8pt"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp"/>-->
+        <!--</TableRow>-->
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:text="Photographer CC Quota"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="8pt"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp" />-->
+            <!--<EditText-->
+                <!--android:id="@+id/edit_photo_cc_quota_event_plan_event"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="8pt"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp"/>-->
+        <!--</TableRow>-->
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:text="Photographer Extra Quota"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="8pt"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp" />-->
+            <!--<EditText-->
+                <!--android:id="@+id/edit_photo_extra_quota_event_plan_event"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="8pt"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp"/>-->
+        <!--</TableRow>-->
         <TableRow>
             <TextView
                 android:text="Videographer Quota"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp" />
@@ -243,26 +245,28 @@
                 android:layout_weight="1"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:text="0"/>
         </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Videographer Extra Quota"
-                android:layout_weight="1"
-                android:textSize="8pt"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp" />
-            <EditText
-                android:id="@+id/edit_video_extra_quota_event_plan_event"
-                android:layout_weight="1"
-                android:textSize="8pt"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
-        </TableRow>
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:text="Videographer Extra Quota"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="8pt"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp" />-->
+            <!--<EditText-->
+                <!--android:id="@+id/edit_video_extra_quota_event_plan_event"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="8pt"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="0dp"/>-->
+        <!--</TableRow>-->
         <TableRow>
             <TextView
                 android:text="Camera Person Quota"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp" />
@@ -271,12 +275,14 @@
                 android:layout_weight="1"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:text="0"/>
         </TableRow>
         <TableRow>
             <TextView
                 android:text="Assistant Camera Person Quota"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp" />
@@ -285,12 +291,14 @@
                 android:layout_weight="1"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:text="0"/>
         </TableRow>
         <TableRow>
             <TextView
                 android:text="Dolly Quota"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp" />
@@ -299,26 +307,30 @@
                 android:layout_weight="1"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:text="0"/>
         </TableRow>
         <TableRow>
             <TextView
                 android:text="VTR Quota"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
-                android:layout_width="0dp" />
+                android:layout_width="0dp"/>
             <EditText
                 android:id="@+id/edit_vtr_quota_event_plan_event"
                 android:layout_weight="1"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:text="0"/>
         </TableRow>
         <TableRow>
             <TextView
                 android:text="Switcher Quota"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp" />
@@ -327,12 +339,14 @@
                 android:layout_weight="1"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:text="0"/>
         </TableRow>
         <TableRow>
             <TextView
                 android:text="Support Quota"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp" />
@@ -341,7 +355,25 @@
                 android:layout_weight="1"
                 android:textSize="8pt"
                 android:layout_height="wrap_content"
-                android:layout_width="0dp"/>
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:text="0"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Editor Quota"
+                android:layout_weight="3"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/edit_editor_quota_event_plan_event"
+                android:layout_weight="1"
+                android:textSize="8pt"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:text="0"/>
         </TableRow>
         <TableRow
             android:paddingTop="4dp"

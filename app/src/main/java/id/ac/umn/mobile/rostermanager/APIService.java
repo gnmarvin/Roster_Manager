@@ -41,12 +41,14 @@ public interface APIService {
     Call<JsonElement> EventList(@Header("token_id") String token_id);
     @GET("/ccit_backend/organization/organization_rest/list")
     Call<JsonElement> TeamList(@Header("token_id") String token_id);
+    @GET("/ccit_backend/roster_job/roster_job_rest/list")
+    Call<JsonElement> JobList(@Header("token_id") String token_id);
 
     @POST("/ccit_backend/event_roster/event_roster_rest/delete")
     Call<JsonElement> DeleteEventRoster(@Header("token_id") String token_id, @Body DeleteEvents body);
 
     @POST("/ccit_backend/event_roster/event_roster_rest/add")
-    Call<JsonElement> AddEventRoster(@Header("token_id") String token_id, @Body AddEvents body);
+    Call<JsonElement> AddEventRoster(@Header("token_id") String token_id, @Body AddEvents addevent, @Body EventRosterHasJob addjob);
 
 
 //    @POST("/ccit_backend/event_roster/event_roster_rest/add")

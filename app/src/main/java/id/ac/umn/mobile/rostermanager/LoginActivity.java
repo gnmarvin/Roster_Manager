@@ -23,6 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
+    SharedData sharedData = SharedData.getInstance();
     Button loginButton;
     TextView forgotText;
     EditText usernameEdit, passwordEdit;
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
     protected void setFilterTeam(){
         //fungsi untuk menambahkan filter TEAM apa yang bertugas, khususnya untuk TEAM MANAGER
-        final SharedData sharedData = SharedData.getInstance();
+        //final SharedData sharedData = SharedData.getInstance();
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
         retrofit2.Call<JsonElement> listTeam = webServiceAPI.TeamList(sharedData.getToken_id());
         //Toast.makeText(LoginActivity.this, sharedData.getRole(), Toast.LENGTH_SHORT).show();
@@ -64,11 +65,36 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    protected void setSharedDataJob(){
+        //final SharedData sharedData = SharedData.getInstance();
+        APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
+        retrofit2.Call<JsonElement> jobList = webServiceAPI.JobList(sharedData.getToken_id());
+        jobList.enqueue(new Callback<JsonElement>() {
+            @Override
+            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                JsonElement element = response.body();
+                JsonObject obj = element.getAsJsonObject();
+                JsonArray jobList = obj.get("roster_job").getAsJsonArray();
+                for(int i = 0; i < jobList.size(); i++ ){
+                    JsonObject jobData = jobList.get(i).getAsJsonObject();
+                    sharedData.setJob_id(jobData.get("id").getAsString(), i, jobData.get("roster_job_code").getAsString());
+                    sharedData.setOrganization_id(jobData.get("ref_organization_id").getAsString());
+                    //Toast.makeText(LoginActivity.this, jobData.get("roster_job_code").getAsString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JsonElement> call, Throwable t) {
+
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        final SharedData sharedData = SharedData.getInstance();
+        //final SharedData sharedData = SharedData.getInstance();
         loginButton = (Button) findViewById(R.id.login);
         forgotText = (TextView) findViewById(R.id.forgot);
         usernameEdit = (EditText) findViewById(R.id.username_edit);
@@ -137,7 +163,8 @@ public class LoginActivity extends AppCompatActivity {
                             sharedData.setContact_id(contact_id);
                             sharedData.setRole(role);
                             sharedData.setToken_id(token_id);
-                            setFilterTeam();
+                            setFilterTeam(); // filtering team and sharedData constant
+                            setSharedDataJob();
                             startActivity(i);
                         }
                     }

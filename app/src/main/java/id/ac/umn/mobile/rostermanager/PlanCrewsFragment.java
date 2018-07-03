@@ -32,6 +32,7 @@ public class PlanCrewsFragment extends Fragment {
     String[] event_end_time = new String[20];
     String[] cod = new String[20];
     String[] team = new String[20];
+    Boolean isempty = true;
     int[] quota = new int[20];
     int index = 0;
     int size; // deklarasi variable untuk menyimpan banyaknya data event yang ada
@@ -71,15 +72,17 @@ public class PlanCrewsFragment extends Fragment {
                     set_event_id = singleData.get("id").getAsString();
                     setter(set_event_id, set_event_name, set_event_start_date, set_event_start_time, set_event_end_time, set_cod, size);
                 }
-                if(planCrewsList.size() == 0){
-                    // jika tidak list event untuk team yang bersangkutan, tidak akan ditampilkan, hanya menampilkan toast
-                    Toast.makeText(getContext(), "Your team was not rostered", Toast.LENGTH_SHORT).show();
-                }
             }
             @Override
             public void onFailure(retrofit2.Call<JsonElement> call, Throwable t) {
             }
         });
+        if(isempty){
+            // jika tidak list event untuk team yang bersangkutan, tidak akan ditampilkan, hanya menampilkan toast
+            Toast.makeText(getContext(), "Your team was not rostered", Toast.LENGTH_SHORT).show();
+        }
+        Toast.makeText(getContext(),sharedData.getCode_team(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), sharedData.getOrganization_id(), Toast.LENGTH_SHORT).show();
         return rootView;
     }
 
@@ -103,6 +106,8 @@ public class PlanCrewsFragment extends Fragment {
                 for (int j = 0; j < data.size(); j++) {
                     JsonObject singleData = data.get(j).getAsJsonObject();
                     //Toast.makeText(getContext(), singleData.get("organization_code").getAsString(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), sharedData.getCode_team(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), sharedData.getOrganization_id(), Toast.LENGTH_SHORT).show();
                     if(singleData.get("organization_code").getAsString().equals(sharedData.getCode_team()))
                     {
                         team[size] = singleData.get("organization_name").getAsString();
@@ -135,6 +140,7 @@ public class PlanCrewsFragment extends Fragment {
                         String.valueOf(set_quota)));
         PlanCrewsAdapter adapter = new PlanCrewsAdapter(getContext(), planCrewsList);
         rv.setAdapter(adapter);
+        isempty = false;
     }
 
     @Override
