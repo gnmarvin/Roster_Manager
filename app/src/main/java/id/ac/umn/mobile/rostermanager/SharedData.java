@@ -1,7 +1,5 @@
 package id.ac.umn.mobile.rostermanager;
 
-import android.app.Application;
-
 /**
  * Created by Marvin on 7/1/2018.
  */
@@ -27,6 +25,49 @@ public class SharedData {
     private String contact_id;
     private String code_team;
     private String name_team;
+    private String organization_id;
+    private String job_id;
+//    private String job_name;
+    private String[] job_code_menu = new String[12];
+    private String[] job_id_menu = new String[12];
+//    private String[] job_name_menu = new String[12];
+
+    public String getJob_id(String code) {
+        for(int i = 0; i < job_id_menu.length ; i++){
+            if(code.equals(this.job_code_menu[i])){
+                this.job_id=job_id_menu[i];
+            }
+            else this.job_id="";
+        }
+        return job_id;
+    }
+
+    public void setJob_id(String job_id, int i, String code) {
+        this.job_id_menu[i]=job_id;
+        this.job_code_menu[i] = code;
+    }
+
+//    public String getJob_name(String code) {
+//        for(int i = 0; i < job_name_menu.length ; i++){
+//            if(code.equals(this.job_code_menu[i])){
+//                this.job_name=job_name_menu[i];
+//            }
+//            else this.job_name="";
+//        }
+//        return job_name;
+//    }
+//
+//    public void setJob_name(String job_name, int i) {
+//        this.job_name_menu[i] = job_name;
+//    }
+
+    public String getOrganization_id() {
+        return organization_id;
+    }
+
+    public void setOrganization_id(String organization_id) {
+        this.organization_id = organization_id;
+    }
 
     public String getName_team() {
         return name_team;
@@ -119,5 +160,9 @@ public class SharedData {
         mobile_no = "";
         mobile_whatsapp = "";
         mobile_line = "";
-        contact_id = "";}
+        contact_id = "";
+        code_team ="";
+        name_team = "";
+
+    }
 }

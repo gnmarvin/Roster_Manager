@@ -29,7 +29,7 @@ public class PlanCrewsAdapter extends RecyclerView.Adapter<PlanCrewsAdapter.Plan
                 .inflate(R.layout.card_plan_crews, parent, false);
         // set the view's size, margins, paddings and layout parameters
         PlanCrewsViewHolder vh = new PlanCrewsViewHolder(v);
-        Toast.makeText(mCtx, getItemCount(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(mCtx, getItemCount(), Toast.LENGTH_SHORT).show();
         return vh;
     }
 
