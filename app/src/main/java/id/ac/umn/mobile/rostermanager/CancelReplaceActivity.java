@@ -36,10 +36,6 @@ public class CancelReplaceActivity extends AppCompatActivity {
         Intent extras = getIntent();
         position = extras.getStringExtra("POSITION");
 
-        if (reason.getText().toString().equals("")) {
-            submitbutton.setEnabled(false);
-        }
-
         submitbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

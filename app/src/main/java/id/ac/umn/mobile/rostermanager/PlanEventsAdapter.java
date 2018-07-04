@@ -94,7 +94,6 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
                                 EventRoster eventRoster = new EventRoster();
                                 DeleteEvents deleteEvents = new DeleteEvents();
                                 eventRoster.withId(planevent.getEvent_id_plant_event());
-                                Toast.makeText(mCtx, new Gson().toJson(deleteEvents.withEventRoster(eventRoster)), Toast.LENGTH_SHORT).show();
                                 APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
                                 retrofit2.Call<JsonElement> deleteEventRoster = webServiceAPI.DeleteEventRoster(sharedData.getToken_id(), deleteEvents.withEventRoster(eventRoster));
 
@@ -135,6 +134,58 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
                 alert11.show();
             }
         });
+
+        holder.unlockEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(mCtx);
+                builder1.setMessage("Are you sure you want to unlock this event and start assigning crew?");
+                builder1.setCancelable(true);
+                builder1.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                EventRoster eventRoster = new EventRoster();
+                                DeleteEvents deleteEvents = new DeleteEvents();
+                                eventRoster.withId(planevent.getEvent_id_plant_event());
+                                APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
+                                retrofit2.Call<JsonElement> unlockEventRoster = webServiceAPI.Unlock(sharedData.getToken_id(), deleteEvents.withEventRoster(eventRoster));
+
+                                unlockEventRoster.enqueue(new Callback<JsonElement>() {
+                                    @Override
+                                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                                        JsonElement element = response.body();
+                                        JsonObject obj = element.getAsJsonObject();
+                                        JsonObject error = obj.get("error").getAsJsonObject();
+                                        String error_code = error.get("error_code").getAsString();
+                                        if(error_code.equals("")){
+                                            Toast.makeText(mCtx, planevent.getName_event_plan_event()+" unlocked", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            Toast.makeText(mCtx, "fail to unlock", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<JsonElement> call, Throwable t) {
+                                    }
+                                });
+                                dialog.cancel();
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
+        });
     }
 
     @Override
@@ -147,14 +198,13 @@ public class PlanEventsAdapter extends RecyclerView.Adapter<PlanEventsAdapter.Pl
         LinearLayout linearLayout;
         TextView textViewPlanEventNameEvent, textViewPlanEventDate, textViewPlanEventTimeStart, textViewPlanEventTimeEnd, textViewPlanEventCod,
         textViewPlanEventPhotoTeam, textViewPlanEventPhotoRespond, textViewPlanEventCampersTeam, textViewPlanEventCampersRespond;
-        Button deleteEvent, lockEvent, unlockEvent;
+        Button deleteEvent, unlockEvent;
 
         public PlanEventsViewHolder(View itemView) {
             super(itemView);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linear_plan_event);
             cardMain = (CardView) itemView.findViewById(R.id.card_item_event);
             deleteEvent = itemView.findViewById(R.id.delete_plan_event);
-            lockEvent = itemView.findViewById(R.id.lock_plan_event);
             unlockEvent = itemView.findViewById(R.id.unlock_plan_event);
             textViewPlanEventNameEvent = itemView.findViewById(R.id.txt_name_event_plan_event);
             textViewPlanEventDate = itemView.findViewById(R.id.txt_date_plan_event);

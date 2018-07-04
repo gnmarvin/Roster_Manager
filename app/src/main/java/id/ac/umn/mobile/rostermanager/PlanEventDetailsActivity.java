@@ -247,9 +247,6 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
 //                            eventRosterHasJob.setRosterJobQuota(add_quota[i]);
 //                            eventRosterHasJob.setOrganizationUnitId(add_organization_id);
 //                        }
-//                        Toast.makeText(PlanEventDetailsActivity.this, eventRosterHasJob.getOrganizationUnitId(), Toast.LENGTH_SHORT).show();
-//                        Toast.makeText(PlanEventDetailsActivity.this, eventRosterHasJob.getRosterJobId(), Toast.LENGTH_SHORT).show();
-//                        Toast.makeText(PlanEventDetailsActivity.this, eventRosterHasJob.getRosterJobQuota(), Toast.LENGTH_SHORT).show();
 //                    }
 //
 //                    APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
