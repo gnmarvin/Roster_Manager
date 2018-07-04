@@ -45,7 +45,6 @@ public class ListCrewDetailsAdapter extends RecyclerView.Adapter<ListCrewDetails
         holder.textViewCrewName.setText(listCrewDetails.getName_crew());
         holder.textViewPosition.setText(listCrewDetails.getPosition());
         holder.textViewTeam.setText(listCrewDetails.getTeam());
-        holder.textViewRespond.setText(listCrewDetails.getRespond());
         holder.linearLayoutlistcrew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,14 +65,12 @@ public class ListCrewDetailsAdapter extends RecyclerView.Adapter<ListCrewDetails
         public TextView textViewCrewName;
         public TextView textViewPosition;
         public TextView textViewTeam;
-        public TextView textViewRespond;
 
         public ViewHolder(View itemView) {
             super(itemView);
             linearLayoutlistcrew = (LinearLayout) itemView.findViewById(R.id.linear_list_crew_plan_crew);
             textViewCrewName = (TextView) itemView.findViewById(R.id.txt_crew_name_list_crew_plan_crew);
             textViewPosition = (TextView) itemView.findViewById(R.id.txt_position_list_crew_plan_crew);
-            textViewRespond = (TextView) itemView.findViewById(R.id.txt_respond_list_crew_plan_crew);
             textViewTeam = (TextView) itemView.findViewById(R.id.txt_team_list_crew_plan_crew);
         }
     }

@@ -26,7 +26,7 @@ public class PlanCrewsDetailsActivity extends AppCompatActivity {
 
     private List<ListCrewDetailsModel> listCrewDetails;
 
-    String token_id, event_id, crew_name, roster_id, job_name, team_name;
+    String token_id, event_id, event_name, crew_name, roster_id, job_name, team_name;
     TextView name_event, date_event, start_time_event, end_time_event, cod_event;
 
     @Override
@@ -36,20 +36,19 @@ public class PlanCrewsDetailsActivity extends AppCompatActivity {
         SharedData sharedData = SharedData.getInstance();
         event_id = sharedData.getEvent_id_plan_crew();
         token_id = sharedData.getToken_id();
-        Toast.makeText(this, token_id, Toast.LENGTH_SHORT).show();
-        Intent detailevent = getIntent();
-        Bundle extras = detailevent.getExtras();
+        Bundle extras = getIntent().getExtras();
         name_event = findViewById(R.id.txt_name_event_plan_crew);
         date_event = findViewById(R.id.txt_date_plan_crew);
         start_time_event = findViewById(R.id.txt_time_start_plan_crew);
         end_time_event = findViewById(R.id.txt_time_end_plan_crew);
         cod_event = findViewById(R.id.txt_cod_plan_crew);
 
-//        name_event.setText(extras.getString("EVENT_NAME"));
-//        date_event.setText(extras.getString("EVENT_START_DATE"));
-//        start_time_event.setText(extras.getString("EVENT_START_TIME"));
-//        end_time_event.setText(extras.getString("EVENT_END_TIME"));
-//        cod_event.setText(extras.getString("EVENT_COD"));
+
+        name_event.setText(sharedData.getEvent_name_crew_details());
+        date_event.setText(sharedData.getDate_event_crew_details());
+        start_time_event.setText(sharedData.getStart_time_event_crew_details());
+        end_time_event.setText(sharedData.getEnd_time_event_crew_details());
+        cod_event.setText(sharedData.getCod_event_crew_details());
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_list_crew_plan_crew);
         recyclerView.setHasFixedSize(true);

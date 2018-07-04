@@ -7,13 +7,12 @@ public class ListCrewDetailsModel {
     private String position;
     private String name_crew;
     private String team;
-    private String respond;
+    private String roster_id;
 
-    public ListCrewDetailsModel(String name_crew, String position, String team, String respond){
+    public ListCrewDetailsModel(String crew_name, String name_crew, String position, String team){
         this.position = position;
         this.name_crew = name_crew;
         this.team = team;
-        this.respond = respond;
     }
 
     public String getPosition() {
@@ -24,8 +23,8 @@ public class ListCrewDetailsModel {
         return name_crew;
     }
 
-    public String getRespond() {
-        return respond;
+    public String getRoster_id() {
+        return roster_id;
     }
 
     public String getTeam() {
@@ -40,8 +39,8 @@ public class ListCrewDetailsModel {
         this.position = position;
     }
 
-    public void setRespond(String respond) {
-        this.respond = respond;
+    public void setRoster_id(String roster_id) {
+        this.roster_id = roster_id;
     }
 
     public void setTeam(String team) {

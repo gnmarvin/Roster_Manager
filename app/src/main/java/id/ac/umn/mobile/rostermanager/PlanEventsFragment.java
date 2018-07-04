@@ -83,17 +83,17 @@ public class PlanEventsFragment extends Fragment {
             public void onFailure(retrofit2.Call<JsonElement> call, Throwable t) {
             }
         });
-        FloatingActionButton fab = rootView.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent addEvent = new Intent(getContext(), PlanEventDetailsActivity.class);
-                Bundle extras = new Bundle();
-                extras.putString("NEW", "new");
-                addEvent.putExtras(extras);
-                startActivity(addEvent);
-            }
-        });
+//        FloatingActionButton fab = rootView.findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent addEvent = new Intent(getContext(), PlanEventDetailsActivity.class);
+//                Bundle extras = new Bundle();
+//                extras.putString("NEW", "new");
+//                addEvent.putExtras(extras);
+//                startActivity(addEvent);
+//            }
+//        });
         return rootView;
     }
     @Override

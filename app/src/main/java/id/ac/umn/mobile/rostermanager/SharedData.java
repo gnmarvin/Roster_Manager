@@ -28,6 +28,53 @@ public class SharedData {
     private String organization_id;
     private String job_id;
 
+    private String event_name_crew_details;
+    private String date_event_crew_details;
+    private String start_time_event_crew_details;
+    private String end_time_event_crew_details;
+
+    public String getEvent_name_crew_details() {
+        return event_name_crew_details;
+    }
+
+    public void setEvent_name_crew_details(String event_name_crew_details) {
+        this.event_name_crew_details = event_name_crew_details;
+    }
+
+    public String getDate_event_crew_details() {
+        return date_event_crew_details;
+    }
+
+    public void setDate_event_crew_details(String date_event_crew_details) {
+        this.date_event_crew_details = date_event_crew_details;
+    }
+
+    public String getStart_time_event_crew_details() {
+        return start_time_event_crew_details;
+    }
+
+    public void setStart_time_event_crew_details(String start_time_event_crew_details) {
+        this.start_time_event_crew_details = start_time_event_crew_details;
+    }
+
+    public String getEnd_time_event_crew_details() {
+        return end_time_event_crew_details;
+    }
+
+    public void setEnd_time_event_crew_details(String end_time_event_crew_details) {
+        this.end_time_event_crew_details = end_time_event_crew_details;
+    }
+
+    public String getCod_event_crew_details() {
+        return cod_event_crew_details;
+    }
+
+    public void setCod_event_crew_details(String cod_event_crew_details) {
+        this.cod_event_crew_details = cod_event_crew_details;
+    }
+
+    private String cod_event_crew_details;
+
     public String getEvent_id_plan_crew() {
         return event_id_plan_crew;
     }

@@ -51,13 +51,18 @@ public class PlanCrewsAdapter extends RecyclerView.Adapter<PlanCrewsAdapter.Plan
                 SharedData sharedData = SharedData.getInstance();
                 sharedData.setEvent_id_plan_crew(plancrew.getEvent_id());
                 Intent gotodetailcrew = new Intent(mCtx, PlanCrewsDetailsActivity.class);
-                Bundle extras = new Bundle();
-                extras.putString("EVENT_NAME", plancrew.getName_event_plan_crew());
-                extras.putString("EVENT_START_DATE", plancrew.getDate_plan_crew());
-                extras.putString("EVENT_START_TIME", plancrew.getTime_start_plan_crew());
-                extras.putString("EVENT_END_TIME", plancrew.getTime_end_plan_crew());
-                extras.putString("EVENT_COD", plancrew.getCod_plan_crew());
-                gotodetailcrew.putExtras(extras);
+                sharedData.setEvent_name_crew_details(plancrew.getName_event_plan_crew());
+                sharedData.setDate_event_crew_details(plancrew.getDate_plan_crew());
+                sharedData.setStart_time_event_crew_details(plancrew.getTime_start_plan_crew());
+                sharedData.setEnd_time_event_crew_details(plancrew.getTime_end_plan_crew());
+                sharedData.setCod_event_crew_details(plancrew.getCod_plan_crew());
+//                Bundle extras = new Bundle();
+//                extras.putString("EVENT_NAME", plancrew.getName_event_plan_crew());
+//                extras.putString("EVENT_START_DATE", plancrew.getDate_plan_crew());
+//                extras.putString("EVENT_START_TIME", plancrew.getTime_start_plan_crew());
+//                extras.putString("EVENT_END_TIME", plancrew.getTime_end_plan_crew());
+//                extras.putString("EVENT_COD", plancrew.getCod_plan_crew());
+//                gotodetailcrew.putExtras(extras);
                 mCtx.startActivity(gotodetailcrew);
 //                Toast.makeText(mCtx, plancrew.getName_event_plan_crew(),Toast.LENGTH_LONG).show();
             }

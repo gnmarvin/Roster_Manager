@@ -206,6 +206,7 @@ public class PlanEventDetailsActivity extends AppCompatActivity {
                     addEvents.setEventRoster(eventRoster);
 
                     List<EventRosterHasJob> eventRosterHasJobvalues = new ArrayList<>();
+
                     EventRosterHasJob eventRosterHasJob = new EventRosterHasJob();
                     for (int i = 0 ; i < 9; i++){
 //                        Toast.makeText(PlanEventDetailsActivity.this, add_quota[i] + " " + code_job[i] + " " + id_job[i], Toast.LENGTH_SHORT).show();
