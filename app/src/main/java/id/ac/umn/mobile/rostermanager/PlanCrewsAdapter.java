@@ -2,6 +2,7 @@ package id.ac.umn.mobile.rostermanager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,9 +48,18 @@ public class PlanCrewsAdapter extends RecyclerView.Adapter<PlanCrewsAdapter.Plan
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedData sharedData = SharedData.getInstance();
+                sharedData.setEvent_id_plan_crew(plancrew.getEvent_id());
                 Intent gotodetailcrew = new Intent(mCtx, PlanCrewsDetailsActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("EVENT_NAME", plancrew.getName_event_plan_crew());
+                extras.putString("EVENT_START_DATE", plancrew.getDate_plan_crew());
+                extras.putString("EVENT_START_TIME", plancrew.getTime_start_plan_crew());
+                extras.putString("EVENT_END_TIME", plancrew.getTime_end_plan_crew());
+                extras.putString("EVENT_COD", plancrew.getCod_plan_crew());
+                gotodetailcrew.putExtras(extras);
                 mCtx.startActivity(gotodetailcrew);
-                Toast.makeText(mCtx, plancrew.getName_event_plan_crew(),Toast.LENGTH_LONG).show();
+//                Toast.makeText(mCtx, plancrew.getName_event_plan_crew(),Toast.LENGTH_LONG).show();
             }
         });
     }

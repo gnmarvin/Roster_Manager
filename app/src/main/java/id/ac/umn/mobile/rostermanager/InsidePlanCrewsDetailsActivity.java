@@ -21,8 +21,8 @@ public class InsidePlanCrewsDetailsActivity extends AppCompatActivity {
         String[] teamcampers = getResources().getStringArray(R.array.Team_Campers);
         String filterposition = getIntent().getStringExtra("position");
 
-        final AutoCompleteTextView autolistposition = findViewById(R.id.list_position);
-        final ImageView dropdownlistposition = findViewById(R.id.drop_down_position);
+//        final AutoCompleteTextView autolistposition = findViewById(R.id.list_position);
+//        final ImageView dropdownlistposition = findViewById(R.id.drop_down_position);
         final AutoCompleteTextView autolistteam = findViewById(R.id.list_team);
         final ImageView dropdownlistteam = findViewById(R.id.drop_down_team);
 
@@ -31,14 +31,14 @@ public class InsidePlanCrewsDetailsActivity extends AppCompatActivity {
         if("photographers".equals(filterposition)){
             Toast.makeText(this, "masuk", Toast.LENGTH_SHORT).show();
             //Dropdown autocomplete position
-            ArrayAdapter<String> adapterpositonphoto= new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, positionphoto);
-            autolistposition.setAdapter(adapterpositonphoto);
-            dropdownlistposition.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    autolistposition.showDropDown();
-                }
-            });
+//            ArrayAdapter<String> adapterpositonphoto= new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, positionphoto);
+//            autolistposition.setAdapter(adapterpositonphoto);
+//            dropdownlistposition.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    autolistposition.showDropDown();
+//                }
+//            });
 
             //Dropdown autocomplete team
             ArrayAdapter<String> adapterteamphoto = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, teamphoto);
@@ -52,14 +52,14 @@ public class InsidePlanCrewsDetailsActivity extends AppCompatActivity {
         }
         else if("campers".equals(filterposition)){
             //Dropdown autocomplete position
-            ArrayAdapter<String> adapterpositoncampers= new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, positioncampers);
-            autolistposition.setAdapter(adapterpositoncampers);
-            dropdownlistposition.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    autolistposition.showDropDown();
-                }
-            });
+//            ArrayAdapter<String> adapterpositoncampers= new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, positioncampers);
+//            autolistposition.setAdapter(adapterpositoncampers);
+//            dropdownlistposition.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    autolistposition.showDropDown();
+//                }
+//            });
 
             //Dropdown autocomplete team
             ArrayAdapter<String> adapterteamcampers = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, teamcampers);

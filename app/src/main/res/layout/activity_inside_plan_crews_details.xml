@@ -12,36 +12,36 @@
         <TableLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
-            <TableRow
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:paddingRight="16dp"
-                android:paddingLeft="16dp">
-                <TextView
-                    android:text="Position"
-                    android:textSize="8pt"
-                    android:gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"/>
-                <TableRow
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-                    <AutoCompleteTextView
-                        android:id="@+id/list_position"
-                        android:gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"/>
-                    <ImageView
-                        android:src="@drawable/chevron_down"
-                        android:id="@+id/drop_down_position"
-                        android:gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"/>
-                </TableRow>
-            </TableRow>
+            <!--<TableRow-->
+                <!--android:paddingTop="4dp"-->
+                <!--android:paddingBottom="4dp"-->
+                <!--android:paddingRight="16dp"-->
+                <!--android:paddingLeft="16dp">-->
+                <!--<TextView-->
+                    <!--android:text="Position"-->
+                    <!--android:textSize="8pt"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"/>-->
+                <!--<TableRow-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content">-->
+                    <!--<AutoCompleteTextView-->
+                        <!--android:id="@+id/list_position"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="match_parent"/>-->
+                    <!--<ImageView-->
+                        <!--android:src="@drawable/chevron_down"-->
+                        <!--android:id="@+id/drop_down_position"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="match_parent"/>-->
+                <!--</TableRow>-->
+            <!--</TableRow>-->
             <TableRow
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"

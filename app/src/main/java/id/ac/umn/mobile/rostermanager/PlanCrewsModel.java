@@ -12,7 +12,7 @@ public class PlanCrewsModel {
 
 
     public PlanCrewsModel(String name_event_plan_crew, String date_plan_crew, String time_start_plan_crew, String time_end_plan_crew, String cod_plan_crew,
-                          String team_plan_crew, String respond_plan_crew){
+                          String team_plan_crew, String respond_plan_crew, String event_id){
         this.name_event_plan_crew = name_event_plan_crew;
         this.date_plan_crew = date_plan_crew;
         this.time_start_plan_crew = time_start_plan_crew;
@@ -20,6 +20,7 @@ public class PlanCrewsModel {
         this.cod_plan_crew = cod_plan_crew;
         this.team_plan_crew = team_plan_crew;
         this.respond_plan_crew = respond_plan_crew;
+        this.event_id = event_id;
     }
 
     public String getName_event_plan_crew() {

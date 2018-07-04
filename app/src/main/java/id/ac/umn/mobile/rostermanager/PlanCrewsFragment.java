@@ -81,8 +81,8 @@ public class PlanCrewsFragment extends Fragment {
             // jika tidak list event untuk team yang bersangkutan, tidak akan ditampilkan, hanya menampilkan toast
             Toast.makeText(getContext(), "Your team was not rostered", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(getContext(),sharedData.getCode_team(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(getContext(), sharedData.getOrganization_id(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(),sharedData.getCode_team(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), sharedData.getOrganization_id(), Toast.LENGTH_SHORT).show();
         return rootView;
     }
 
@@ -118,7 +118,7 @@ public class PlanCrewsFragment extends Fragment {
                     if(team[size].equals(sharedData.getName_team())){
                         //membandingkan data nama team pada shared data login / user (TM) dengan nama team yang bertugas dalam setiap event
                         //jika sama, maka akan dibuatkan card baru
-                        addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team[size], quota[size]);
+                        addtoCard(event_name[size], event_start_date[size], event_start_time[size], event_end_time[size], cod[size], team[size], quota[size], event_id[size]);
                     }
                 }
             }
@@ -128,7 +128,7 @@ public class PlanCrewsFragment extends Fragment {
         });
     }
 
-    public void addtoCard(String set_event_name, String set_event_start_date, String set_event_start_time, String set_event_end_time, String set_cod, String set_team, int set_quota){
+    public void addtoCard(String set_event_name, String set_event_start_date, String set_event_start_time, String set_event_end_time, String set_cod, String set_team, int set_quota, String set_event_id){
         planCrewsList.add(
                 new PlanCrewsModel(
                         set_event_name,
@@ -137,7 +137,8 @@ public class PlanCrewsFragment extends Fragment {
                         set_event_end_time,
                         set_cod,
                         set_team,
-                        String.valueOf(set_quota)));
+                        String.valueOf(set_quota),
+                        set_event_id));
         PlanCrewsAdapter adapter = new PlanCrewsAdapter(getContext(), planCrewsList);
         rv.setAdapter(adapter);
         isempty = false;
