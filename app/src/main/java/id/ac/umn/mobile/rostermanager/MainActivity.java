@@ -107,8 +107,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.Notifications) {
-            return true;
+        if (id == R.id.Logout) {
+            displaySelectedScreen(R.id.nav_logout);
         }
 
         return super.onOptionsItemSelected(item);
@@ -137,9 +137,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_my_schedules:
                 fragment = new MySchedulesFragment();
                 break;
-            case R.id.nav_blockout:
-                fragment = new BlockoutDatesFragment();
-                break;
             case R.id.nav_plan_events:
                 if(!role.equals("OPS")){
                     Toast.makeText(this, "You're not allowed to access this menu", Toast.LENGTH_SHORT).show();
@@ -155,12 +152,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 else{
                     fragment = new PlanCrewsFragment();
                 }
-                break;
-            case R.id.nav_cod:
-                fragment = new CodFragment();
-                break;
-            case R.id.nav_setting:
-                fragment = new SettingFragment();
                 break;
             case R.id.nav_logout:
                 APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);

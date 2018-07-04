@@ -142,12 +142,6 @@
                 <TableRow
                     android:paddingTop="4dp">
                     <Button
-                        android:id="@+id/lock_plan_event"
-                        android:text="lock"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"/>
-                    <Button
                         android:id="@+id/unlock_plan_event"
                         android:text="unlock"
                         android:layout_weight="1"

@@ -14,10 +14,6 @@
             android:id="@+id/nav_inbox"
             android:icon="@drawable/calendar_multiple"
             android:title="Inbox" />
-        <item
-            android:id="@+id/nav_blockout"
-            android:icon="@drawable/calendar_multiple"
-            android:title="Blockout Dates" />
     </group>
     <group
         android:id="@+id/menu_mid"
@@ -30,35 +26,15 @@
             android:id="@+id/nav_plan_crews"
             android:icon="@drawable/format_list_checks"
             android:title="Plan Crews" />
-        <item
-            android:id="@+id/nav_cod"
-            android:icon="@drawable/format_list_checks"
-            android:title="Chief On Duty" />
     </group>
     <group
         android:id="@+id/menu_bottom"
         android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Help &amp; Setting" />
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_menu_manage"
             android:title="Logout" />
     </group>
     </menu>
-    <!--<item android:title="Communicate">-->
-        <!--<menu>-->
-            <!--<item-->
-                <!--android:id="@+id/nav_share"-->
-                <!--android:icon="@drawable/ic_menu_share"-->
-                <!--android:title="Share" />-->
-            <!--<item-->
-                <!--android:id="@+id/nav_send"-->
-                <!--android:icon="@drawable/ic_menu_send"-->
-                <!--android:title="Send" />-->
-        <!--</menu>-->
-    <!--</item>-->
 
 

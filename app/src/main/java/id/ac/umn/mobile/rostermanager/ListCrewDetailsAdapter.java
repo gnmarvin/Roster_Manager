@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -53,7 +52,6 @@ public class ListCrewDetailsAdapter extends RecyclerView.Adapter<ListCrewDetails
                 Intent gotoinsidelistcrew = new Intent(context, InsidePlanCrewsDetailsActivity.class);
                 gotoinsidelistcrew.putExtra("position", "campers"); //parameter untuk filtering dia fotografer atau campers
                 context.startActivity(gotoinsidelistcrew);
-                Toast.makeText(context, listCrewDetails.getName_crew(),Toast.LENGTH_LONG).show();
             }
         });
     }

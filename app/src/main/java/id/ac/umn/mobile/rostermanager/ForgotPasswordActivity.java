@@ -28,32 +28,33 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         final TextView emailText = (TextView) findViewById(R.id.email);
         final Button sendRequestButton = (Button) findViewById(R.id.send_request);
-        sendRequestButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = emailText.getText().toString();
-                APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
-                Call<JsonElement> recovery = webServiceAPI.Recovery(email);
-                recovery.enqueue(new Callback<JsonElement>() {
-                    @Override
-                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                        JsonElement element = response.body();
-                        JsonObject obj = element.getAsJsonObject();
-                        JsonObject error = obj.get("error").getAsJsonObject();
-                        String error_code = error.get("error_code").getAsString();
-                        if (error_code.equals("SYS01005")) {
-                            String error_message = error.get("error_message").getAsString();
-                            Toast.makeText(ForgotPasswordActivity.this, error_message, Toast.LENGTH_SHORT).show();
+
+            sendRequestButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String email = emailText.getText().toString();
+                    APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
+                    Call<JsonElement> recovery = webServiceAPI.Recovery(email);
+                    recovery.enqueue(new Callback<JsonElement>() {
+                        @Override
+                        public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                            JsonElement element = response.body();
+                            JsonObject obj = element.getAsJsonObject();
+                            JsonObject error = obj.get("error").getAsJsonObject();
+                            String error_code = error.get("error_code").getAsString();
+                            if (error_code.equals("SYS01005")) {
+                                String error_message = error.get("error_message").getAsString();
+                                Toast.makeText(ForgotPasswordActivity.this, error_message, Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<JsonElement> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<JsonElement> call, Throwable t) {
 
-                    }
-                });
-            }
-        });
+                        }
+                    });
+                }
+            });
     }
 
 }

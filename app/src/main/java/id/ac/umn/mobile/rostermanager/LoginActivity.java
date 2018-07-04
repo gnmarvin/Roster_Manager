@@ -34,12 +34,9 @@ public class LoginActivity extends AppCompatActivity {
 
     protected void setFilterTeam(){
         //fungsi untuk menambahkan filter TEAM apa yang bertugas, khususnya untuk TEAM MANAGER
-        //final SharedData sharedData = SharedData.getInstance();
         APIService webServiceAPI = APIClient.getApiClient().create(APIService.class);
         retrofit2.Call<JsonElement> listTeam = webServiceAPI.TeamList(sharedData.getToken_id());
-        //Toast.makeText(LoginActivity.this, sharedData.getRole(), Toast.LENGTH_SHORT).show();
         if(sharedData.getRole().equals("TM")){
-            //Toast.makeText(LoginActivity.this, sharedData.getRole(), Toast.LENGTH_SHORT).show();
             listTeam.enqueue(new Callback<JsonElement>() {
                 @Override
                 public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
@@ -52,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
                             if(teamData.get("manager_full_name").getAsString().equals(sharedData.getName())){
                                 sharedData.setCode_team(teamData.get("organization_code").getAsString());
                                 sharedData.setName_team(teamData.get("organization_name").getAsString());
-                                //Toast.makeText(LoginActivity.this, sharedData.getRole() +" "+ sharedData.getCode_team()+" "+sharedData.getName_team(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -78,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
                     JsonObject jobData = jobList.get(i).getAsJsonObject();
                     sharedData.setJob_id(jobData.get("id").getAsString(), i, jobData.get("roster_job_code").getAsString());
                     sharedData.setOrganization_id(jobData.get("ref_organization_id").getAsString());
-                    //Toast.makeText(LoginActivity.this, jobData.get("roster_job_code").getAsString(), Toast.LENGTH_SHORT).show();
                 }
             }
 

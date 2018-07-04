@@ -68,6 +68,9 @@ public interface APIService {
     @POST("/ccit_backend/event_roster/event_roster_rest/add")
     Call<JsonElement> AddEventRoster(@Header("token_id") String token_id, @Body AddEvents body);
 
+    @POST("/ccit_backend/event_roster/event_roster_rest/unlock")
+    Call<JsonElement> Unlock(@Header("token_id") String token_id, @Body DeleteEvents body);
+
     @GET("/ccit_backend/event_roster/event_roster_rest/list_crew")
     Call<JsonElement> CrewRoster(@Header("token_id") String token_id, @Query("evenr_roster_id") String contact_id);
 
